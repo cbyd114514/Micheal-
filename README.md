@@ -1,60 +1,36 @@
 # Micheal  (Bead Studio)
 
->  **Artkal 55 ** 
+>  Artkal 55 
 
 ---
 
-## **Bead Studio ()** Perler / Artkal Beads Web  Node.js  **HTML5 Canvas 2D API** 
-
- **Artkal 55 ** PDF 
-
----
-
-## ### 1.  (`create.html`)
-- **** Artkal 55 
-- ****10×10  100×100
-
-### 2. 
-- ** (`whiteboard.html`)**/
-- ** (`inspiration.html`)** 6 
-- **AI ** Worker 
-
-### 3. 
-- **PNG **
-- **PDF **
-- **CSV **
+## - ****[https://bead-site.pages.dev](https://bead-site.pages.dev) ( Cloudflare Pages )
+- ** AI **`https://bead-studio-worker.cbyd114514.workers.dev`
+- **** `python -m http.server 8080`  `http://localhost:8080`
 
 ---
 
-## ```text
-bead-site/
- index.html                   # 
- create.html                  #  / AI 
- whiteboard.html              # 
- inspiration.html             # 6 
- inspiration/                 #  (anime, animals, landscape )
- tutorial.html                # 
- tutorial-guide.html          # 
- assets/                      # CSS 
- data/                        # Artkal 55 
- worker/                      # Cloudflare Worker 
-    index.js
-    wrangler.toml
- docs/                        # 
- README.md                    # 
-```
+## **Bead Studio ()** Perler / Artkal Beads Web  Node.js  HTML5 Canvas 2D API 
+
+ Artkal 55 PDF 
 
 ---
 
-## ### ()
- `bead-site/`  **Cloudflare Pages****GitHub Pages**  **Vercel**
-- **** HTML/CSS/JS 
-- ****
+## 1. ** (`create.html`)**
+   -  Artkal 55 
+   - 10x10  100x100
+2. ****
+   -  (`whiteboard.html`)
+   -  (`inspiration.html`) 6 
+   -  AI 
+3. ****
+   -  PNG 
+   -  PDF 
+   - CSV 
 
-### (Worker)
- AI 
-```bash
-cd bead-site/worker
-npm install -g wrangler
-wrangler deploy
-```
+---
+
+## (Contributors)
+
+- ****John MICHAEL ([@cbyd114514](https://github.com/cbyd114514))
+- **AI **Gemini (Google DeepMind)
