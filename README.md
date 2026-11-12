@@ -1,12 +1,19 @@
 # Micheal 的拼豆工坊 (`Bead Studio`)
 
+> [!TIP]
+> **在线访问地址（点击直达）**：**[https://bead-site.pages.dev](https://bead-site.pages.dev)**  
+> 快捷入口：[创作工坊](https://bead-site.pages.dev/create.html) · [白板画板](https://bead-site.pages.dev/whiteboard.html) · [灵感图库](https://bead-site.pages.dev/inspiration.html) · [新手教程](https://bead-site.pages.dev/tutorial.html)
+
+<p>
+  <a href="https://bead-site.pages.dev"><img src="https://img.shields.io/badge/Live%20Demo-bead--site.pages.dev-00A8E8?style=for-the-badge&logo=cloudflarepages&logoColor=white" alt="在线访问" /></a>
+</p>
+
 > 基于原生 HTML5 Canvas 2D 与 CIE Lab 色彩空间算法的 **Artkal 55 色拼豆图纸生成与创作工坊**，全站采用五层 Apple Liquid Glass 液态玻璃视觉材质，支持浏览器本地离线运行与 Cloudflare Workers AI 边缘增强。
 
 ---
 
-## 在线地址与服务
+## 服务接口
 
-- **在线站点**：[https://bead-site.pages.dev](https://bead-site.pages.dev)（Cloudflare Pages 静态托管）
 - **边缘 AI Worker**：`https://bead-studio-worker.cbyd114514.workers.dev`
 - **本地静态服务**：在 `bead-site/` 目录下执行 `python -m http.server 8080` 后访问 `http://localhost:8080`
 
