@@ -1,5 +1,8 @@
 # Micheal 的拼豆网 (Bead Studio)
 
+> [!TIP]
+> **在线访问地址（点击直达）**：**[https://bead-site.pages.dev](https://bead-site.pages.dev)**
+
 把任意图片自动转换为 **Artkal 55 色** 拼豆图纸的零构建静态站。支持上传转拼豆、AI 生图、白板绘制、灵感临摹，并一键导出 **PNG / PDF / CSV**。
 
 - 技术栈：**原生 HTML / CSS / JS + Canvas 2D + ES Modules**，无框架、无打包步骤。
