@@ -46,10 +46,13 @@ function renderMarkup(opts) {
         <span class="sb-brand-name">${escapeHtml(m.name)}</span>
         <span class="sb-brand-sub">教程与说明</span>
       </span>
+      <button class="sb-head-close-btn" type="button" aria-label="收起教程" title="收起教程">&times;</button>
     </div>
 
     <div class="sb-search-wrap">
-      <span class="sb-track sb-track--search" aria-hidden="true">🔍</span>
+      <span class="sb-track sb-track--search" aria-hidden="true">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </span>
       <input class="sb-search" type="search" autocomplete="off"
              placeholder="搜索${escapeHtml(m.name)}教程…"
              aria-label="搜索${escapeHtml(m.name)}教程" />
@@ -60,7 +63,7 @@ function renderMarkup(opts) {
 
     <div class="sb-foot">
       <a class="sb-link" href="tutorial-guide.html?module=${moduleId}">完整教程目录 →</a>
-      <a class="sb-link sb-link--muted" href="${otherHref || other.href}">${other.icon} 前往${escapeHtml(other.name)}</a>
+      <a class="sb-link sb-link--muted" href="${otherHref || other.href}"><span style="display:inline-flex;vertical-align:middle;margin-right:4px;">${other.icon}</span>前往${escapeHtml(other.name)}</a>
       <button class="sb-collapse-btn" type="button"
               aria-expanded="true" aria-label="收起侧边栏" title="收起侧边栏">
         <span class="sb-track" aria-hidden="true"><span class="sb-chevron">‹</span></span>
@@ -128,6 +131,14 @@ export function initSidebar(opts) {
     e.stopPropagation();
     collapsed = !collapsed;
     try { localStorage.setItem(storageKey, collapsed ? '1' : '0'); } catch (e) { /* noop */ }
+    applyCollapsed();
+  });
+
+  const closeHeadBtn = root.querySelector('.sb-head-close-btn');
+  closeHeadBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    collapsed = true;
+    try { localStorage.setItem(storageKey, '1'); } catch (err) { /* noop */ }
     applyCollapsed();
   });
 

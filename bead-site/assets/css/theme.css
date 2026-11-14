@@ -2134,21 +2134,24 @@ details.help-panel[open] .help-panel-body li:nth-child(12) { animation-delay: 0.
   --sb-track: 30px;
   --sb-gap: 10px;
   position: fixed;
-  top: 74px;
-  bottom: 24px;
-  right: 24px;
+  top: 60px;
+  bottom: 0;
+  right: 0;
   width: 320px;
-  max-width: calc(100vw - 48px);
-  max-height: calc(100vh - 98px);
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 14px;
+  padding: 16px 14px;
   box-sizing: border-box;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-left: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  border-bottom: none;
+  border-right: none;
+  border-radius: 18px 0 0 0;
   background: var(--card);
-  box-shadow: var(--shadow-xl);
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.28);
   overflow: hidden;
   z-index: 1050;
   transition: width 0.26s cubic-bezier(0.16, 1, 0.3, 1),
@@ -2157,6 +2160,31 @@ details.help-panel[open] .help-panel-body li:nth-child(12) { animation-delay: 0.
               border-color 0.2s ease,
               transform 0.26s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: width, transform;
+}
+
+.sb-head-close-btn {
+  width: 24px;
+  height: 24px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted-foreground);
+  font-size: 17px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin-left: auto;
+}
+.sb-head-close-btn:hover {
+  background: var(--muted);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+.sb-root.is-collapsed .sb-head-close-btn {
+  display: none !important;
 }
 
 /* 固定尺寸图标轨道：水平垂直居中，两种状态共用 */
@@ -2392,18 +2420,20 @@ details.help-panel[open] .help-panel-body li:nth-child(12) { animation-delay: 0.
 .sb-root.is-collapsed {
   position: fixed;
   bottom: 24px;
-  right: 24px;
+  right: 20px;
   top: auto;
   width: 60px;
-  max-height: 120px;
+  max-height: 110px;
   padding: 12px 14px;
   /* 不用 align-items: center —— 居中会让 30px 轨道在 32px 内容区里产生 1px 偏移。
      flex-start 使子元素一律从内容区起点开始，与展开态像素级一致。 */
   align-items: flex-start;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
   z-index: 990;
   transition: width 0.26s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.2s ease,
@@ -2412,8 +2442,8 @@ details.help-panel[open] .help-panel-body li:nth-child(12) { animation-delay: 0.
 }
 .sb-root.is-collapsed:hover {
   border-color: var(--accent);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  transform: translateY(-3px);
+  box-shadow: 0 6px 22px rgba(0, 82, 255, 0.3);
+  transform: translateY(-2px);
 }
 .sb-root.is-collapsed .sb-track--brand {
   cursor: pointer;
