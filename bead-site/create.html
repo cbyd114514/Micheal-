@@ -117,8 +117,15 @@
         max-height: 54vh;
       }
     }
-    .bead-mode-stage-wrap canvas {
-      max-height: calc(100vh - 150px);
+    .bead-mode-stage-wrap:not(.is-zoomed) canvas {
+      max-width: 100%;
+      max-height: calc(100vh - 140px);
+    }
+    .bead-mode-stage-wrap.is-zoomed canvas,
+    .bead-stage.is-zoomed canvas {
+      max-width: none !important;
+      max-height: none !important;
+      margin: auto;
     }
 
     /* ===== 标题区压缩 =====
@@ -990,6 +997,7 @@
     /** 仅当「适合屏幕」且未缩放时才限制画布显示高度，放大后允许滚动查看 */
     function syncStageFitClass() {
       stageWrap.classList.toggle('bead-stage--fit', viewOptions.fit && viewOptions.zoom === 1);
+      stageWrap.classList.toggle('is-zoomed', viewOptions.zoom > 1);
     }
 
     function applyStageZoom(delta) {
@@ -1002,11 +1010,18 @@
       updateZoomLabels();
     }
 
+    function syncModeFitClass() {
+      if (modeWrapEl) {
+        modeWrapEl.classList.toggle('is-zoomed', modeZoom > 1);
+      }
+    }
+
     function applyModeZoom(delta) {
       const next = delta === 0
         ? 1
         : Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, modeZoom * Math.pow(ZOOM_STEP, delta)));
       modeZoom = Math.round(next * 100) / 100;
+      syncModeFitClass();
       if (!gridData.length) return;
       modeViewer.setOptions({ zoom: modeZoom });
       modeViewer.setMatrix(gridData);
@@ -1775,6 +1790,7 @@
         return;
       }
       modeZoom = 1;
+      syncModeFitClass();
       beadModeEl.classList.add('open');
       document.body.classList.add('is-locked');
       syncModeGroup();

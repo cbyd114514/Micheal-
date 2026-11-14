@@ -33,9 +33,9 @@ export function readTheme() {
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
   return {
     isDark,
-    canvasBg: isDark ? '#0f172a' : '#ffffff',
-    grid: isDark ? 'rgba(148,163,184,0.22)' : 'rgba(15,23,42,0.10)',
-    gridStrong: isDark ? 'rgba(148,163,184,0.45)' : 'rgba(15,23,42,0.2)',
+    canvasBg: isDark ? '#090d14' : '#ffffff',
+    grid: isDark ? 'rgba(148,163,184,0.36)' : 'rgba(15,23,42,0.18)',
+    gridStrong: isDark ? 'rgba(148,163,184,0.72)' : 'rgba(15,23,42,0.42)',
     rulerText: isDark ? '#94a3b8' : '#64748b',
     accent: isDark ? '#6d95ff' : '#0052ff',
     check: '#10b981',
@@ -131,15 +131,34 @@ export function renderPattern(ctx, matrix, options = {}) {
   /* --- 网格底纹 --- */
   if (showGrid) {
     ctx.save();
+    // 1. 普通细网格线
     ctx.strokeStyle = theme.grid;
     ctx.lineWidth = 1;
     ctx.beginPath();
     for (let x = 0; x <= cols; x++) {
+      if (x % 5 === 0) continue;
       const px = Math.round(originX + x * cellSize) + 0.5;
       ctx.moveTo(px, originY);
       ctx.lineTo(px, originY + rows * cellSize);
     }
     for (let y = 0; y <= rows; y++) {
+      if (y % 5 === 0) continue;
+      const py = Math.round(originY + y * cellSize) + 0.5;
+      ctx.moveTo(originX, py);
+      ctx.lineTo(originX + cols * cellSize, py);
+    }
+    ctx.stroke();
+
+    // 2. 每 5 格主网格线（加粗且颜色更鲜明，放大时清晰可见）
+    ctx.strokeStyle = theme.gridStrong;
+    ctx.lineWidth = Math.max(1.5, Math.min(2.5, Math.round(cellSize * 0.05)));
+    ctx.beginPath();
+    for (let x = 0; x <= cols; x += 5) {
+      const px = Math.round(originX + x * cellSize) + 0.5;
+      ctx.moveTo(px, originY);
+      ctx.lineTo(px, originY + rows * cellSize);
+    }
+    for (let y = 0; y <= rows; y += 5) {
       const py = Math.round(originY + y * cellSize) + 0.5;
       ctx.moveTo(originX, py);
       ctx.lineTo(originX + cols * cellSize, py);

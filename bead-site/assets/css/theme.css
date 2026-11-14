@@ -1443,7 +1443,6 @@ input[type='range']:focus-visible {
   display: block;
   width: auto;
   height: auto;
-  max-width: 100%;
   margin: auto;
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
@@ -1452,10 +1451,18 @@ input[type='range']:focus-visible {
   touch-action: manipulation;
 }
 
-.bead-stage--fit canvas {
-  /* 高度预算由 create.html 的 stageHeightBudget() 实测视口剩余空间后写入
-     --stage-max-h；这里用 min() 保留一个 70vh 的上限，避免超宽屏上画布过大。 */
+.bead-stage--fit:not(.is-zoomed) canvas {
+  /* 适合屏幕且未放大时限制宽高 */
+  max-width: 100%;
   max-height: min(var(--stage-max-h, 70vh), 760px);
+}
+
+.bead-stage.is-zoomed canvas,
+.bead-mode-stage-wrap.is-zoomed canvas,
+.bead-stage:not(.bead-stage--fit) canvas {
+  /* 放大模式：彻底解除最大尺寸限制，实现 1:1 物理像素展开放大与平滑滚动 */
+  max-width: none !important;
+  max-height: none !important;
 }
 
 .bead-stage--interactive canvas {
