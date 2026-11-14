@@ -20,9 +20,44 @@
     .td-head h1 {
       font-family: var(--font-display);
       font-size: clamp(1.5rem, 4vw, 2.1rem);
-      font-weight: 400;
+      font-weight: 700;
       color: var(--foreground);
       margin: 0 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .td-title-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: color-mix(in srgb, var(--accent) 12%, var(--card));
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+      color: var(--accent);
+      flex: none;
+    }
+    .td-title-badge svg {
+      width: 20px;
+      height: 20px;
+    }
+    .td-title-main {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700;
+      color: var(--foreground);
+    }
+    .td-title-sep {
+      color: var(--muted-foreground);
+      opacity: 0.5;
+      font-weight: 300;
+    }
+    .td-title-sub {
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      font-weight: 500;
+      color: var(--muted-foreground);
     }
     .td-head p {
       color: var(--muted-foreground);
@@ -38,26 +73,64 @@
       margin: 20px 0 8px;
     }
     .td-switch button {
-      padding: 8px 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
       border-radius: 999px;
       border: 1px solid var(--border);
       background: var(--card);
       color: var(--foreground);
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.15s;
+    }
+    .td-switch-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .td-switch-icon svg {
+      width: 16px;
+      height: 16px;
+      vertical-align: middle;
     }
     .td-switch button.active {
       background: var(--accent);
       border-color: var(--accent);
       color: #fff;
     }
+    .td-search-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin: 16px 0 6px;
+    }
+    .td-search-icon {
+      position: absolute;
+      left: 14px;
+      color: var(--muted-foreground);
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+    }
     .td-search {
       width: 100%;
-      padding: 11px 14px;
-      font-size: 14px;
-      margin: 14px 0 6px;
+      padding: 12px 16px 12px 42px;
+      font-size: 14.5px;
+      margin: 0;
+      border-radius: 12px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--foreground);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .td-search:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
     }
     .td-search-note {
       font-size: 12px;
@@ -184,7 +257,12 @@
     </div>
 
     <div class="td-switch" id="td-switch"></div>
-    <input id="td-search" class="form-input td-search" type="search" placeholder="搜索教程内容，例如「对称」「色号」「导出」…" aria-label="搜索教程" />
+    <div class="td-search-wrap">
+      <span class="td-search-icon" aria-hidden="true">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </span>
+      <input id="td-search" class="form-input td-search" type="search" placeholder="搜索教程内容，例如「对称」「色号」「导出」…" aria-label="搜索教程" />
+    </div>
     <div class="td-search-note" id="td-note">搜索范围仅限当前模块，创意工坊与白板画板的教程数据彼此独立。</div>
     <div class="td-count" id="td-count"></div>
 
@@ -221,7 +299,7 @@
         const m = MODULES[id];
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.textContent = `${m.icon} ${m.name}`;
+        btn.innerHTML = `<span class="td-switch-icon" aria-hidden="true">${m.icon}</span><span class="td-switch-name">${escapeHtml(m.name)}</span>`;
         btn.className = id === moduleId ? 'active' : '';
         btn.addEventListener('click', () => {
           moduleId = id;
@@ -296,7 +374,12 @@
     function render() {
       const m = MODULES[moduleId];
       document.title = `${m.name}使用教程 · Micheal 的拼豆网`;
-      $('td-title').textContent = `${m.icon} ${m.name} · 使用教程`;
+      $('td-title').innerHTML = `
+        <span class="td-title-badge" aria-hidden="true">${m.icon}</span>
+        <span class="td-title-main">${escapeHtml(m.name)}</span>
+        <span class="td-title-sep">·</span>
+        <span class="td-title-sub">使用教程</span>
+      `;
       descEl.textContent = m.id === 'studio'
         ? '从上传图片到导出图纸的完整链路：参数含义、拼豆模式核对、导出格式。'
         : '手绘像素画的完整链路：工具说明、画面调整、图片导入、视图与导出。';

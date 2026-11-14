@@ -182,12 +182,15 @@ export function initSidebar(opts) {
         ? ['画笔', '橡皮', '色号', '对称', '标尺', '板型']
         : ['导入', '板宽', '色板', '抠图', '降噪', '打卡'];
       results.innerHTML = `
-        <p class="sb-count">${escapeHtml(moduleName)} · ${countOf(moduleId)} 条教程</p>
-        <p class="sb-hint">在上方输入框检索本模块教程。${escapeHtml(moduleName)}与另一个模块的教程数据彼此独立，搜索结果不会混在一起。</p>
-        <div class="sb-quick-tags" style="margin-top:8px;">
-          <div style="font-size:11px;font-weight:600;color:var(--muted-foreground);margin-bottom:6px;">热门检索词：</div>
-          <div style="display:flex;flex-wrap:wrap;gap:4px;">
-            ${suggestions.map(s => `<button type="button" class="sb-tag-chip" data-query="${s}" style="padding:2px 8px;font-size:11px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--foreground);cursor:pointer;">${s}</button>`).join('')}
+        <div class="sb-hero-card">
+          <div class="sb-hero-title">${escapeHtml(moduleName)} · 核心指南</div>
+          <p class="sb-count">${countOf(moduleId)} 条结构化教程已就绪</p>
+          <p class="sb-hint">在上方输入框检索本模块教程。${escapeHtml(moduleName)}与另一个模块教程数据彼此独立，结果精准互不干扰。</p>
+        </div>
+        <div class="sb-quick-tags">
+          <div class="sb-quick-title">热门检索词（点击直达）：</div>
+          <div class="sb-quick-chips">
+            ${suggestions.map(s => `<button type="button" class="sb-tag-chip" data-query="${s}">${s}</button>`).join('')}
           </div>
         </div>`;
       results.querySelectorAll('.sb-tag-chip').forEach(chip => {
@@ -215,8 +218,10 @@ export function initSidebar(opts) {
       `<p class="sb-count">${hits.length} 条结果 · 仅「${escapeHtml(moduleName)}」</p>` +
       hits.map((r) => `
         <a class="sb-hit" href="tutorial-guide.html?module=${moduleId}&amp;q=${encodeURIComponent(q)}&amp;id=${encodeURIComponent(r.entry.id)}">
-          <span class="sb-hit-title">${renderHighlight(r.entry.title, findRanges(r.entry.title, q))}</span>
-          <span class="sb-hit-cat">${escapeHtml(r.entry.category)}</span>
+          <div class="sb-hit-head">
+            <span class="sb-hit-title">${renderHighlight(r.entry.title, findRanges(r.entry.title, q))}</span>
+            <span class="sb-hit-cat">${escapeHtml(r.entry.category)}</span>
+          </div>
           <span class="sb-hit-snip">${renderHighlight(r.snippet.text, r.snippet.ranges)}</span>
         </a>`).join('');
   }

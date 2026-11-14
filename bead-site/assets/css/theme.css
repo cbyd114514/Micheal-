@@ -2219,17 +2219,19 @@ details.help-panel[open] .help-panel-body li:nth-child(12) { animation-delay: 0.
 }
 .sb-brand-name {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--foreground);
-  line-height: 1.3;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 .sb-brand-sub {
   display: block;
-  font-size: 10.5px;
-  font-weight: 400;
+  font-size: 11px;
+  font-weight: 500;
   color: var(--muted-foreground);
   line-height: 1.3;
+  margin-top: 2px;
 }
 
 /* 折叠按钮：两态结构完全相同（图标轨道 + 文字标签），差别只在文字是否显示。
@@ -2288,22 +2290,24 @@ details.help-panel[open] .help-panel-body li:nth-child(12) { animation-delay: 0.
   grid-column: 2;
   width: 100%;
   padding: 8px 10px 8px 32px;
-  font-size: 12.5px;
+  font-size: 13px;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--muted);
   color: var(--foreground);
   box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 .sb-search::placeholder { color: var(--muted-foreground); }
 .sb-search:focus {
   outline: none;
   border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 15%, transparent);
 }
 .sb-scope {
   grid-column: 1 / -1;
   margin: 6px 0 0;
-  font-size: 10.5px;
+  font-size: 11px;
   color: var(--muted-foreground);
   font-family: var(--font-mono);
 }
@@ -2315,53 +2319,109 @@ details.help-panel[open] .help-panel-body li:nth-child(12) { animation-delay: 0.
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
+}
+.sb-hero-card {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 5%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--accent) 14%, var(--border));
+  margin-bottom: 2px;
+}
+.sb-hero-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 2px;
+}
+.sb-quick-tags {
+  margin-top: 6px;
+}
+.sb-quick-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  margin-bottom: 6px;
+}
+.sb-quick-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.sb-tag-chip {
+  padding: 3px 9px;
+  font-size: 11.5px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.sb-tag-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
 }
 .sb-count {
   margin: 0;
-  font-size: 11px;
+  font-size: 11.5px;
+  font-weight: 600;
   color: var(--muted-foreground);
   font-family: var(--font-mono);
 }
 .sb-hint {
-  margin: 0;
-  font-size: 11px;
+  margin: 4px 0 0;
+  font-size: 11.5px;
   line-height: 1.6;
   color: var(--muted-foreground);
 }
 .sb-hit {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 9px 10px;
+  gap: 5px;
+  padding: 10px 12px;
   border: 1px solid var(--border);
-  border-radius: 9px;
+  border-radius: 10px;
   background: var(--muted);
   text-decoration: none;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
 }
-.sb-hit:hover { border-color: var(--accent); }
+.sb-hit:hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 4%, var(--card));
+  transform: translateY(-1px);
+}
+.sb-hit-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
 .sb-hit-title {
-  font-size: 12.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--foreground);
-  line-height: 1.45;
+  line-height: 1.35;
+  flex: 1;
 }
 .sb-hit-cat {
-  align-self: flex-start;
-  padding: 0 6px;
+  flex: none;
+  padding: 1px 7px;
   border-radius: 999px;
-  border: 1px solid var(--border);
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border));
   background: var(--card);
   font-size: 10.5px;
-  color: var(--muted-foreground);
+  font-weight: 600;
+  color: var(--accent);
 }
 .sb-hit-snip {
-  font-size: 11.5px;
+  font-size: 12px;
   line-height: 1.6;
   color: var(--muted-foreground);
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
