@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>创作灵感 · Micheal 的拼豆网</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230052ff'/%3E%3Ccircle cx='11' cy='12' r='4' fill='%23fff'/%3E%3Ccircle cx='21' cy='12' r='4' fill='%23FFD400'/%3E%3Ccircle cx='11' cy='21' r='4' fill='%23E60012'/%3E%3Ccircle cx='21' cy='21' r='4' fill='%2322c55e'/%3E%3C/svg%3E" />
-  <meta name="description" content="精选拼豆创作图纸库，涵盖热门动漫、名胜古建、治愈萌宠与节日美食，点击即可查看色号清单并带入创作工坊。" />
+  <meta name="description" content="精选拼豆创作图纸库与数字工坊，涵盖网络顶流动漫、治愈萌宠、游戏像素、名胜古建、节日美食，支持用户上传图片一键自动转图纸入库。" />
   <link rel="stylesheet" href="assets/css/theme.css" />
   <link rel="stylesheet" href="assets/css/layout.css" />
 </head>
@@ -14,18 +14,32 @@
 
   <main class="inspiration-container">
     <header class="page-head reveal">
-      <span class="section-label">Inspiration</span>
+      <span class="section-label">Inspiration Studio</span>
       <h1>精选拼豆创作图纸库</h1>
-      <p>收录 <strong id="gallery-count">—</strong> 款图纸，涵盖网络顶流、动漫 IP、游戏像素、人文建筑、治愈萌宠与节日美食。点击任意图纸即可查看色号清单，或直接带入创作工坊进行微调。</p>
+      <p>收录 <strong id="gallery-count">—</strong> 款精美图纸，涵盖网络顶流、动漫 IP、游戏像素、人文建筑、治愈萌宠与节日美食。支持上传图片智能转化为拼豆图纸并入驻工坊，内置内容安全自动审核。</p>
     </header>
 
+    <!-- 数字工坊快速操作条 -->
+    <div class="workshop-action-bar reveal">
+      <div class="workshop-intro">
+        <span class="badge badge--workshop">✨ 独家工坊</span>
+        <strong>自制图纸转工坊</strong> · 上传动漫头像、萌宠照片或像素手绘，AI 智能转化为拼豆图纸并入驻数字工坊！
+      </div>
+      <button id="btn-open-upload-modal" class="btn-upload-trigger" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        上传图片转图纸
+      </button>
+    </div>
+
+    <!-- 分类筛选器 -->
     <div class="filter-tabs" id="filter-tabs">
       <button class="filter-tab active" data-category="all">全部</button>
+      <button class="filter-tab filter-tab--workshop" data-category="workshop">💎 我的数字工坊</button>
       <button class="filter-tab" data-category="anime">🔥 热门动漫</button>
-      <button class="filter-tab" data-category="games">🎮 游戏像素</button>
-      <button class="filter-tab" data-category="architecture">🏯 名胜古建</button>
       <button class="filter-tab" data-category="pets">🐾 治愈萌宠</button>
+      <button class="filter-tab" data-category="games">🎮 游戏像素</button>
       <button class="filter-tab" data-category="food">🍔 美食甜品</button>
+      <button class="filter-tab" data-category="architecture">🏯 名胜古建</button>
       <button class="filter-tab" data-category="festival">🏮 节日庆典</button>
     </div>
 
@@ -52,6 +66,87 @@
           <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;padding-top:8px;">
             <button id="modal-transfer-btn" class="btn btn-primary btn-block" type="button">用这张图开始创作 →</button>
             <button id="modal-export-btn" class="btn btn-outline btn-block" type="button">导出图纸 (PNG)</button>
+            <button id="modal-delete-btn" class="btn btn-outline btn-block" type="button" style="display:none;color:#ef4444;border-color:rgba(239,68,68,0.4);">🗑️ 从数字工坊删除</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 数字工坊上传与智能转图纸弹窗 -->
+  <div class="modal-backdrop" id="upload-modal" role="dialog" aria-modal="true" aria-label="上传图片转图纸">
+    <div class="upload-modal-dialog">
+      <button class="modal-close-btn" id="upload-modal-close-btn" type="button" aria-label="关闭">&times;</button>
+      <h2 style="margin:0;font-size:22px;font-family:var(--font-display);">✨ 上传图片 · 自动转化为拼豆图纸</h2>
+      <p class="muted" style="font-size:13.5px;margin:8px 0 20px;">支持 JPG / PNG / WebP 格式。内置 AI 内容安全自动审核（杜绝色情违规内容），自动匹配 Artkal Mini 2.6mm 真实色卡并归档至数字工坊。</p>
+
+      <!-- 拖拽上传区 -->
+      <div class="upload-dropzone" id="upload-dropzone">
+        <input type="file" id="upload-file-input" accept="image/png,image/jpeg,image/webp" style="display:none;" />
+        <svg class="upload-dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m16 16-4-4-4 4"/></svg>
+        <p style="font-weight:600;margin:0 0 6px;color:var(--foreground);">点击选择图片 或 将图片拖拽至此区域</p>
+        <p class="muted" style="font-size:12.5px;margin:0;">建议上传主体明确、轮廓清晰的动漫、萌宠或像素手绘图片</p>
+      </div>
+
+      <!-- 安全审核指示条 -->
+      <div id="safety-indicator" class="safety-indicator" style="display:none;"></div>
+
+      <!-- 实时双栏预览区 -->
+      <div id="preview-section" style="display:none;">
+        <div class="preview-split-box">
+          <div class="preview-pane">
+            <span class="preview-pane-title">📷 原图参考</span>
+            <div class="preview-media-wrap">
+              <img id="source-img-preview" alt="原图预览" />
+            </div>
+          </div>
+          <div class="preview-pane">
+            <span class="preview-pane-title" id="pattern-preview-title">🎨 拼豆图纸效果</span>
+            <div class="preview-media-wrap">
+              <canvas id="converted-pattern-canvas"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- 转换与属性选项 -->
+        <div class="upload-options-form">
+          <div class="form-group-custom">
+            <label for="cfg-title">图纸名称</label>
+            <input type="text" id="cfg-title" class="form-control-custom" placeholder="例如：我的可爱小猫" maxlength="24" />
+          </div>
+          <div class="form-group-custom">
+            <label for="cfg-category">所属分类</label>
+            <select id="cfg-category" class="form-control-custom">
+              <option value="anime">🔥 热门动漫</option>
+              <option value="pets">🐾 治愈萌宠</option>
+              <option value="games">🎮 游戏像素</option>
+              <option value="food">🍔 美食甜品</option>
+              <option value="architecture">🏯 名胜古建</option>
+              <option value="festival">🏮 节日庆典</option>
+            </select>
+          </div>
+          <div class="form-group-custom">
+            <label for="cfg-grid-size">网格画幅</label>
+            <select id="cfg-grid-size" class="form-control-custom">
+              <option value="24">24×24 迷你便携挂件</option>
+              <option value="32" selected>32×32 标准主流画幅 (推荐)</option>
+              <option value="40">40×40 高精大画幅</option>
+            </select>
+          </div>
+          <div class="form-group-custom" style="justify-content: flex-end;">
+            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin-bottom: 8px;">
+              <input type="checkbox" id="cfg-remove-bg" checked style="width: 16px; height: 16px; accent-color: var(--accent);" />
+              <span>自动抠除纯白/透明背景</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 统计与操作 -->
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:24px;padding-top:16px;border-top:1px solid var(--border);">
+          <div id="stats-summary-text" class="muted" style="font-size:13px;"></div>
+          <div style="display:flex;gap:10px;">
+            <button id="btn-cancel-upload" class="btn btn-outline" type="button">取消</button>
+            <button id="btn-save-to-workshop" class="btn btn-primary" type="button">🚀 发布至数字工坊</button>
           </div>
         </div>
       </div>
@@ -63,6 +158,9 @@
   <script type="module">
     import { injectChrome } from './assets/js/chrome.js';
     import { ALL_PATTERNS } from './assets/js/patterns-data.js';
+    import { WorkshopStore } from './assets/js/workshop-store.js';
+    import { SafetyAuditor } from './assets/js/safety-auditor.js';
+    import { ImageToPatternConverter } from './assets/js/image-to-pattern.js';
     import { BeadViewer, buildLegend, computeStats, renderPattern, fitCellToBox, aspectForMatrix, cropToContent } from './assets/js/bead-viewer.js';
 
     try { injectChrome('inspiration'); } catch (e) { console.warn(e); }
@@ -73,14 +171,13 @@
     const modalTitle = document.getElementById('modal-title');
     const modalDesc = document.getElementById('modal-desc');
     const modalColorList = document.getElementById('modal-color-list');
+    const modalDeleteBtn = document.getElementById('modal-delete-btn');
 
     const thumbs = [];
     let modalViewer = null;
     let selectedPattern = null;
     let modalHighlight = null;
-
-    const galleryCount = document.getElementById('gallery-count');
-    if (galleryCount) galleryCount.textContent = String(ALL_PATTERNS.length);
+    let currentFilter = 'all';
 
     const EXHIBIT_THEME = {
       isDark: false,
@@ -92,17 +189,47 @@
       check: '#10b981',
     };
 
-    function renderCards(filter = 'all') {
+    function getDisplayPatterns() {
+      return WorkshopStore.getAllCombinedPatterns(ALL_PATTERNS);
+    }
+
+    function renderCards(filter = currentFilter) {
+      currentFilter = filter;
       gridContainer.innerHTML = '';
       thumbs.length = 0;
 
-      const list = filter === 'all' ? ALL_PATTERNS : ALL_PATTERNS.filter(p => p.category === filter);
+      const all = getDisplayPatterns();
+      const list = filter === 'all' 
+        ? all 
+        : filter === 'workshop' 
+          ? all.filter(p => p.isUserUploaded)
+          : all.filter(p => p.category === filter);
+
+      const galleryCount = document.getElementById('gallery-count');
+      if (galleryCount) galleryCount.textContent = String(all.length);
+
+      if (list.length === 0 && filter === 'workshop') {
+        const empty = document.createElement('div');
+        empty.className = 'empty-workshop';
+        empty.innerHTML = `
+          <div class="empty-workshop-icon">🎨</div>
+          <h3 style="margin: 0 0 8px; font-size: 18px; color: var(--foreground);">你的数字工坊暂无图纸</h3>
+          <p style="margin: 0 0 16px; font-size: 14px;">点击上方「上传图片转图纸」按钮，即可将你喜爱的图片瞬间转换为拼豆图纸并入驻工坊！</p>
+          <button class="btn btn-primary" onclick="document.getElementById('btn-open-upload-modal').click()">立即上传制作 →</button>
+        `;
+        gridContainer.appendChild(empty);
+        return;
+      }
+
       list.forEach((p, i) => {
         const rows = p.matrix.length;
         const cols = p.matrix[0].length;
 
         const card = document.createElement('article');
         card.className = 'pattern-card reveal';
+        const badgeClass = p.isUserUploaded ? 'badge--workshop' : 'badge--accent';
+        const tagText = p.isUserUploaded ? '💎 工坊原创' : (p.tag || '精选');
+
         card.innerHTML = `
           <div class="pattern-preview-box">
             <canvas class="pattern-canvas-thumb" aria-label="${p.title} 预览"></canvas>
@@ -110,7 +237,7 @@
           <div class="pattern-info">
             <div class="pattern-title-row">
               <span class="pattern-title">${p.title}</span>
-              <span class="badge badge--accent">${p.tag || '精选'}</span>
+              <span class="badge ${badgeClass}">${tagText}</span>
             </div>
             <div class="pattern-meta">
               <span>${cols}×${rows} 网格</span>
@@ -121,7 +248,6 @@
         card.addEventListener('click', () => openModal(p));
         gridContainer.appendChild(card);
 
-        // 外框仍按整幅比例（网格整齐），框内图案用裁剪后的内容，真正贴边铺满
         const box = card.querySelector('.pattern-preview-box');
         box.style.aspectRatio = String(aspectForMatrix(cols, rows));
 
@@ -141,13 +267,13 @@
         viewer.setMatrix(content);
         thumbs.push({ viewer, box, cols: cCols, rows: cRows });
 
-        setTimeout(() => card.classList.add('is-visible'), Math.min(i, 10) * 40);
+        setTimeout(() => card.classList.add('is-visible'), Math.min(i, 10) * 35);
       });
 
       requestAnimationFrame(layoutThumbs);
     }
 
-    /** 按容器实测尺寸重算缩略图格子大小，图片填满外框 */
+    /** 缩略图按外框紧凑重排 */
     function layoutThumbs() {
       thumbs.forEach(({ viewer, box, cols, rows }) => {
         viewer.setOptions({ cellSize: fitCellToBox(box, cols, rows, 16) });
@@ -164,7 +290,13 @@
       selectedPattern = p;
       modalHighlight = null;
       modalTitle.textContent = p.title;
-      modalDesc.textContent = `${p.tag || ''} · ${p.desc || ''}`;
+      modalDesc.textContent = `${p.isUserUploaded ? '💎 用户数字工坊原创' : (p.tag || '')} · ${p.desc || ''}`;
+
+      if (p.isUserUploaded) {
+        modalDeleteBtn.style.display = 'block';
+      } else {
+        modalDeleteBtn.style.display = 'none';
+      }
 
       const dim = Math.max(p.matrix.length, p.matrix[0].length, 1);
       const cellSize = Math.max(8, Math.min(34, Math.floor(520 / dim)));
@@ -238,6 +370,16 @@
       link.click();
     });
 
+    modalDeleteBtn.addEventListener('click', () => {
+      if (!selectedPattern || !selectedPattern.isUserUploaded) return;
+      if (confirm(`确定要从数字工坊中删除图纸「${selectedPattern.title}」吗？`)) {
+        WorkshopStore.deleteWorkshopPattern(selectedPattern.id);
+        closeModal();
+        renderCards(currentFilter);
+        updateTabCounts();
+      }
+    });
+
     document.querySelectorAll('.filter-tab').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
@@ -247,20 +389,244 @@
       });
     });
 
-    /** 在筛选标签上补齐各类数量，方便一眼看到图库规模 */
+    /** 动态更新各标签图纸统计数 */
     function updateTabCounts() {
-      const countOf = cat => (cat === 'all' ? ALL_PATTERNS.length : ALL_PATTERNS.filter(p => p.category === cat).length);
+      const all = getDisplayPatterns();
+      const countOf = cat => {
+        if (cat === 'all') return all.length;
+        if (cat === 'workshop') return all.filter(p => p.isUserUploaded).length;
+        return all.filter(p => p.category === cat).length;
+      };
+
       document.querySelectorAll('.filter-tab').forEach(btn => {
-        const label = btn.textContent.replace(/\s*\(\d+\)$/, '');
-        btn.textContent = `${label} (${countOf(btn.dataset.category)})`;
+        const cat = btn.dataset.category;
+        const count = countOf(cat);
+        const baseName = btn.textContent.replace(/\s*\(\d+\)$/, '');
+        btn.textContent = `${baseName} (${count})`;
       });
     }
+
+    window.addEventListener('workshop-patterns-changed', () => {
+      updateTabCounts();
+      renderCards(currentFilter);
+    });
+
+    /* =========================================================================
+       数字工坊上传弹窗与智能转图纸逻辑（含自动安全审核）
+       ========================================================================= */
+    const uploadModal = document.getElementById('upload-modal');
+    const uploadDropzone = document.getElementById('upload-dropzone');
+    const uploadFileInput = document.getElementById('upload-file-input');
+    const safetyIndicator = document.getElementById('safety-indicator');
+    const previewSection = document.getElementById('preview-section');
+    const sourceImgPreview = document.getElementById('source-img-preview');
+    const convertedCanvas = document.getElementById('converted-pattern-canvas');
+    const statsSummaryText = document.getElementById('stats-summary-text');
+
+    const cfgTitle = document.getElementById('cfg-title');
+    const cfgCategory = document.getElementById('cfg-category');
+    const cfgGridSize = document.getElementById('cfg-grid-size');
+    const cfgRemoveBg = document.getElementById('cfg-remove-bg');
+    const btnSaveToWorkshop = document.getElementById('btn-save-to-workshop');
+
+    let uploadedImgObj = null;
+    let convertedPatternObj = null;
+    let uploadViewer = null;
+
+    function openUploadModal() {
+      uploadModal.classList.add('open');
+      document.body.classList.add('is-locked');
+      resetUploadState();
+    }
+
+    function closeUploadModal() {
+      uploadModal.classList.remove('open');
+      document.body.classList.remove('is-locked');
+      resetUploadState();
+    }
+
+    function resetUploadState() {
+      uploadedImgObj = null;
+      convertedPatternObj = null;
+      safetyIndicator.style.display = 'none';
+      safetyIndicator.className = 'safety-indicator';
+      previewSection.style.display = 'none';
+      uploadFileInput.value = '';
+      cfgTitle.value = '';
+    }
+
+    document.getElementById('btn-open-upload-modal').addEventListener('click', openUploadModal);
+    document.getElementById('upload-modal-close-btn').addEventListener('click', closeUploadModal);
+    document.getElementById('btn-cancel-upload').addEventListener('click', closeUploadModal);
+
+    uploadModal.addEventListener('click', e => {
+      if (e.target === uploadModal) closeUploadModal();
+    });
+
+    uploadDropzone.addEventListener('click', () => uploadFileInput.click());
+    uploadDropzone.addEventListener('dragover', e => {
+      e.preventDefault();
+      uploadDropzone.classList.add('dragover');
+    });
+    uploadDropzone.addEventListener('dragleave', () => uploadDropzone.classList.remove('dragover'));
+    uploadDropzone.addEventListener('drop', e => {
+      e.preventDefault();
+      uploadDropzone.classList.remove('dragover');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        handleFileSelect(e.dataTransfer.files[0]);
+      }
+    });
+
+    uploadFileInput.addEventListener('change', e => {
+      if (e.target.files && e.target.files[0]) {
+        handleFileSelect(e.target.files[0]);
+      }
+    });
+
+    /** 处理用户选择的文件：第一道防线安全审核 -> 自动转图纸 */
+    async function handleFileSelect(file) {
+      if (!file.type.startsWith('image/')) {
+        alert('请选择有效的图片文件（JPG / PNG / WebP）');
+        return;
+      }
+
+      // 提取文件名作为默认标题
+      const defaultName = file.name.replace(/\.[^/.]+$/, '').slice(0, 20);
+      cfgTitle.value = defaultName;
+
+      // 显示审核中
+      safetyIndicator.style.display = 'flex';
+      safetyIndicator.className = 'safety-indicator safety-indicator--scanning';
+      safetyIndicator.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1.2s linear infinite;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+        <span>🛡️ AI 安全审核系统正在对图片进行合规扫描（色情裸露与不良特征检测）...</span>
+      `;
+
+      const reader = new FileReader();
+      reader.onload = async (evt) => {
+        const img = new Image();
+        img.onload = async () => {
+          uploadedImgObj = img;
+          sourceImgPreview.src = evt.target.result;
+
+          // 执行安全审核
+          const auditResult = await SafetyAuditor.audit({
+            image: img,
+            title: cfgTitle.value,
+            desc: ''
+          });
+
+          if (!auditResult.pass) {
+            // 审核不通过，严厉拦截
+            safetyIndicator.className = 'safety-indicator safety-indicator--danger';
+            safetyIndicator.innerHTML = `
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>${auditResult.reason || '⚠️ 内容安全审核未通过：检测到该图片涉嫌包含色情违规内容，已被数字工坊系统拦截。'}</span>
+            `;
+            previewSection.style.display = 'none';
+            btnSaveToWorkshop.disabled = true;
+            return;
+          }
+
+          // 审核通过
+          safetyIndicator.className = 'safety-indicator safety-indicator--pass';
+          safetyIndicator.innerHTML = `
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>✓ 内容安全审核通过（健康合规）· 图像已自动量化匹配为 Artkal Mini 色系！</span>
+          `;
+          btnSaveToWorkshop.disabled = false;
+          previewSection.style.display = 'block';
+
+          // 运行转换引擎
+          triggerPatternConversion();
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    /** 触发拼豆图纸自动量化转换并渲染预览 */
+    function triggerPatternConversion() {
+      if (!uploadedImgObj) return;
+
+      const size = parseInt(cfgGridSize.value, 10) || 32;
+      const removeBg = cfgRemoveBg.checked;
+      const title = cfgTitle.value.trim() || '我的原创拼豆图纸';
+      const category = cfgCategory.value;
+
+      convertedPatternObj = ImageToPatternConverter.convert(uploadedImgObj, {
+        gridSize: size,
+        autoRemoveBg: removeBg,
+        title,
+        category,
+        desc: `由用户在数字工坊智能生成的 ${size}×${size} 专属图纸。`
+      });
+
+      // 渲染拼豆预览
+      if (!uploadViewer) {
+        uploadViewer = new BeadViewer(convertedCanvas, {
+          cellSize: 8,
+          beadStyle: 'round',
+          gap: 'small',
+          showGrid: true,
+          showCode: false,
+          showRuler: false,
+        });
+      }
+      uploadViewer.setMatrix(convertedPatternObj.matrix);
+
+      statsSummaryText.innerHTML = `
+        已自动匹配 <strong>${convertedPatternObj.uniqueColors}</strong> 种 Artkal 标准色 · 消耗 <strong>${convertedPatternObj.totalBeads}</strong> 颗拼豆
+      `;
+    }
+
+    // 监听配置更改，动态重新转换
+    cfgGridSize.addEventListener('change', triggerPatternConversion);
+    cfgRemoveBg.addEventListener('change', triggerPatternConversion);
+    cfgCategory.addEventListener('change', () => {
+      if (convertedPatternObj) convertedPatternObj.category = cfgCategory.value;
+    });
+    cfgTitle.addEventListener('input', () => {
+      if (convertedPatternObj) convertedPatternObj.title = cfgTitle.value.trim() || '我的原创拼豆图纸';
+    });
+
+    // 保存至工坊
+    btnSaveToWorkshop.addEventListener('click', async () => {
+      if (!convertedPatternObj) return;
+
+      // 文本安全二次检查
+      const textAudit = SafetyAuditor.auditText(cfgTitle.value);
+      if (!textAudit.pass) {
+        alert(textAudit.reason);
+        return;
+      }
+
+      convertedPatternObj.title = cfgTitle.value.trim() || '我的原创拼豆图纸';
+      convertedPatternObj.category = cfgCategory.value;
+
+      const success = WorkshopStore.saveWorkshopPattern(convertedPatternObj);
+      if (success) {
+        closeUploadModal();
+        // 自动切换到数字工坊 Tab
+        const workshopTab = document.querySelector('.filter-tab--workshop');
+        if (workshopTab) {
+          document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+          workshopTab.classList.add('active');
+          renderCards('workshop');
+          updateTabCounts();
+        }
+      } else {
+        alert('保存至数字工坊失败，请检查浏览器本地存储配额。');
+      }
+    });
 
     window.addEventListener('site:themechange', () => {
       layoutThumbs();
       if (modalViewer && modal.classList.contains('open')) modalViewer.render();
+      if (uploadViewer && uploadModal.classList.contains('open')) uploadViewer.render();
     });
 
+    // 初始化渲染
     renderCards('all');
     updateTabCounts();
   </script>

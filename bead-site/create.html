@@ -757,6 +757,7 @@
   <script type="module">
     import { injectChrome } from './assets/js/chrome.js';
     import { ALL_PATTERNS, PALETTES } from './assets/js/patterns-data.js';
+    import { WorkshopStore } from './assets/js/workshop-store.js';
     import { BeadViewer, buildLegend, computeStats, renderPattern } from './assets/js/bead-viewer.js';
     // 侧栏的教程检索：教程数据、搜索逻辑与侧栏组件都抽成共享模块，
     // 保证创作工坊与白板画板两页**表现完全一致**，但各自持有独立实例。
@@ -1142,7 +1143,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     const patternId = urlParams.get('patternId');
     if (patternId) {
-      const found = ALL_PATTERNS.find(p => p.id === patternId);
+      const found = WorkshopStore.getPatternById(patternId, ALL_PATTERNS);
       if (found) {
         const pHeight = found.matrix.length;
         const pWidth = found.matrix[0].length;
