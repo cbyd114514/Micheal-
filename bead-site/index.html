@@ -245,15 +245,26 @@
 
     const grid = document.getElementById('featured-grid');
     // 首页精选：跨分类挑选，含本批新增图纸
+    // 首页精选：精选 18 款小红书顶流爆款、名人名画与复杂动漫图纸
     const FEATURED_IDS = [
+      'van-gogh-portrait',
+      'van-gogh-starry-night',
+      'einstein-tongue',
+      'demon-slayer-tanjiro',
+      'one-piece-luffy',
+      'totoro-umbrella',
+      'jay-chou-fantasy',
+      'kobe-bryant-24',
+      'pokemon-gengar-laugh',
+      'sanrio-kuromi-wings',
+      'spongebob-squarepants',
+      'chiikawa-hachiware',
+      'mona-lisa-smile',
+      'pearl-earring-girl',
+      'naruto-sage-mode',
       'mount-fuji-sakura',
       'shiba-inu-portrait',
-      'matcha-ice-cream',
-      'pikachu-lightning',
-      'festival-lantern',
-      'unicorn-fantasy',
-      'night-lighthouse',
-      'genshin-paimon',
+      'sailor-moon-crescent',
     ];
     const byId = new Map(ALL_PATTERNS.map(p => [p.id, p]));
     const featuredList = [];
@@ -262,7 +273,7 @@
       if (p) featuredList.push(p);
     });
     for (const p of ALL_PATTERNS) {
-      if (featuredList.length >= 8) break;
+      if (featuredList.length >= 18) break;
       if (!featuredList.includes(p)) featuredList.push(p);
     }
     const thumbs = [];
@@ -284,21 +295,44 @@
         const cRows = content.length;
         const cCols = content[0].length;
 
+        let beadCount = 0;
+        const colorMap = new Map();
+        for (const row of p.matrix) {
+          for (const b of row) {
+            if (b) {
+              beadCount++;
+              colorMap.set(b.code, b.hex || '#000');
+            }
+          }
+        }
+        const colorCount = colorMap.size;
+        const topColors = Array.from(colorMap.values()).slice(0, 6);
+
         const card = document.createElement('article');
         card.className = 'featured-card reveal';
         card.innerHTML = `
           <div class="featured-preview">
+            <span class="featured-preview-tag">${p.tag || '精选'}</span>
+            <span class="featured-preview-badge">${cols}×${rows}</span>
             <canvas aria-label="${p.title} 图纸预览"></canvas>
           </div>
           <div class="featured-body">
-            <div class="featured-meta-row">
-              <span class="featured-title">${p.title}</span>
-              <span class="badge">${cols}×${rows}</span>
+            <div class="featured-title-wrap">
+              <span class="featured-title" title="${p.title}">${p.title}</span>
             </div>
-            <div class="featured-meta-row">
-              <span class="badge badge--accent">${p.tag || '精选'}</span>
+            <div class="featured-stats-row">
+              <span class="featured-stat-item"><b>${beadCount}</b> 颗</span>
+              <span class="featured-stat-sep">·</span>
+              <span class="featured-stat-item"><b>${colorCount}</b> 色</span>
+              <span class="featured-stat-diff">${p.difficulty || '★★★☆☆'}</span>
             </div>
-            <a href="create.html?patternId=${encodeURIComponent(p.id)}" class="featured-btn">载入设计工坊</a>
+            <div class="featured-palette-bar" aria-hidden="true" title="主要用色构成">
+              ${topColors.map(hex => `<span class="featured-color-dot" style="background-color:${hex};"></span>`).join('')}
+            </div>
+            <a href="create.html?patternId=${encodeURIComponent(p.id)}" class="featured-btn">
+              <span>载入设计工坊</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
           </div>
         `;
         grid.appendChild(card);

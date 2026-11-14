@@ -35,6 +35,7 @@
     <div class="filter-tabs" id="filter-tabs">
       <button class="filter-tab active" data-category="all">全部精选</button>
       <button class="filter-tab filter-tab--workshop" data-category="workshop">我的工坊</button>
+      <button class="filter-tab" data-category="celebrity">名人名画</button>
       <button class="filter-tab" data-category="anime">热门动漫</button>
       <button class="filter-tab" data-category="pets">治愈萌宠</button>
       <button class="filter-tab" data-category="games">游戏像素</button>
@@ -117,7 +118,8 @@
           <div class="form-group-custom">
             <label for="cfg-category">所属分类</label>
             <select id="cfg-category" class="form-control-custom">
-              <option value="anime">热门动漫</option>
+              <option value="celebrity">名人名画</option>
+            <option value="anime">热门动漫</option>
               <option value="pets">治愈萌宠</option>
               <option value="games">游戏像素</option>
               <option value="food">美食甜品</option>
@@ -234,6 +236,19 @@
         const rows = p.matrix.length;
         const cols = p.matrix[0].length;
 
+        let beadCount = 0;
+        const colorMap = new Map();
+        for (const row of p.matrix) {
+          for (const b of row) {
+            if (b) {
+              beadCount++;
+              colorMap.set(b.code, b.hex || '#000');
+            }
+          }
+        }
+        const colorCount = colorMap.size;
+        const topColors = Array.from(colorMap.values()).slice(0, 5);
+
         const card = document.createElement('article');
         card.className = 'pattern-card reveal';
         const badgeClass = p.isUserUploaded ? 'badge--workshop' : 'badge--accent';
@@ -241,16 +256,20 @@
 
         card.innerHTML = `
           <div class="pattern-preview-box">
+            <span class="featured-preview-badge">${cols}×${rows}</span>
             <canvas class="pattern-canvas-thumb" aria-label="${p.title} 预览"></canvas>
           </div>
           <div class="pattern-info">
             <div class="pattern-title-row">
-              <span class="pattern-title">${p.title}</span>
+              <span class="pattern-title" title="${p.title}">${p.title}</span>
               <span class="badge ${badgeClass}">${tagText}</span>
             </div>
             <div class="pattern-meta">
-              <span>${cols}×${rows} 网格</span>
-              <span>${p.difficulty || ''}</span>
+              <span><b>${beadCount}</b> 颗 · <b>${colorCount}</b> 色</span>
+              <span style="color:var(--accent);">${p.difficulty || ''}</span>
+            </div>
+            <div class="featured-palette-bar" aria-hidden="true" title="主要用色构成">
+              ${topColors.map(hex => `<span class="featured-color-dot" style="background-color:${hex};"></span>`).join('')}
             </div>
           </div>
         `;

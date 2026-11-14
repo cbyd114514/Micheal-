@@ -9,6 +9,10 @@ import { BEAD_COLORS, BY_CODE } from './bead-colors.js';
 
 /* ---------- 图纸实际用到的标准色 ---------- */
 export const C_MAP = {
+  MA12: BY_CODE.get('MA12'),
+  MA14: BY_CODE.get('MA14'),
+  MA19: BY_CODE.get('MA19'),
+  MD10: BY_CODE.get('MD10'),
   MA1: BY_CODE.get('MA1'),
   MA10: BY_CODE.get('MA10'),
   MA18: BY_CODE.get('MA18'),
@@ -113,6 +117,1014 @@ function decodeGrid(rleStr, width, height, cmap) {
 // 精选 70 款小红书与拼豆社区潮流爆款 32x32 大画幅主流图纸
 // =========================================================================
 export const ALL_PATTERNS = [
+  {
+    id: 'van-gogh-portrait',
+    title: '梵高·麦秸草帽自画像',
+    category: 'celebrity',
+    tag: '艺术名画',
+    difficulty: '★★★★★',
+    desc: '32×32高阶复杂画幅。小红书高赞爆款，复刻梵高标志性金黄麦秸草帽、姜黄落腮胡与深蓝中山领风衣，兼具浓郁后印象派油画厚涂笔触。',
+    matrix: decodeGrid(`
+      32. |
+      1. 30MH7 1. |
+      1. MH7 28MC16 MH7 1. |
+      1. MH7 MC16 13MC18 MA4 12MC18 MC16 MH7 1. |
+      1. MH7 MC16 9MC18 9MA4 8MC18 MC16 MH7 1. |
+      1. MH7 MC16 7MC18 13MA4 6MC18 MC16 MH7 1. |
+      1. MH7 MC16 6MC18 MA6 13MA4 MA6 5MC18 MC16 MH7 1. |
+      1. MH7 MC16 4MC18 2MA6 15MA4 2MA6 3MC18 MC16 MH7 1. |
+      1. MH7 MC16 3MC18 4MA6 13MA4 4MA6 2MC18 MC16 MH7 1. |
+      1. MH7 MC16 2MC18 5MA6 13MA4 5MA6 MC18 MC16 MH7 1. |
+      1. MH7 MC16 3MC18 21MD14 2MC18 MC16 MH7 1. |
+      1. MH7 MC16 4MC18 3MA6 12MA18 4MA6 3MC18 MC16 MH7 1. |
+      1. MH7 MC16 6MC18 MA6 MA18 3MD14 MA18 MA12 2MA18 3MD14 MA18 2MA6 5MC18 MC16 MH7 1. |
+      1. MH7 MC16 7MC18 MA18 MD14 MH7 MH1 MA18 MA12 2MA18 MD14 MH7 MH1 MA18 7MC18 MC16 MH7 1. |
+      1. MH7 MC16 7MC18 MA18 3MD14 MA6 MA12 2MA6 3MD14 MA18 7MC18 MC16 MH7 1. |
+      1. MH7 MC16 7MC18 MA18 3MA6 4MA14 3MA6 MA18 7MC18 MC16 MH7 1. |
+      1. MH7 MC16 7MC18 MA18 10MA6 MA18 7MC18 MC16 MH7 1. |
+      1. MH7 MC16 7MC18 MA18 MA6 8MA7 MA6 MA18 7MC18 MC16 MH7 1. |
+      1. MH7 MC16 7MC18 MA18 MA6 8MA7 MA6 MA18 7MC18 MC16 MH7 1. |
+      1. MH7 MC16 7MC18 MA18 MA6 8MA7 MA6 MA18 7MC18 MC16 MH7 1. |
+      1. MH7 MC16 7MC18 MA18 MA6 8MA7 MA6 MA18 7MC18 MC16 MH7 1. |
+      1. MH7 MC16 26MC18 MC16 MH7 1. |
+      1. MH7 MC16 4MC18 6MD10 7MC4 6MD10 3MC18 MC16 MH7 1. |
+      1. MH7 MC16 3MC18 8MD10 5MC4 8MD10 2MC18 MC16 MH7 1. |
+      1. MH7 MC16 3MC18 8MD10 2MC4 MH7 2MC4 8MD10 2MC18 MC16 MH7 1. |
+      1. MH7 MC16 3MC18 9MD10 MC4 MH7 MC4 9MD10 2MC18 MC16 MH7 1. |
+      1. MH7 MC16 2MC18 11MD10 MA4 11MD10 MC18 MC16 MH7 1. |
+      1. MH7 MC16 2MC18 11MD10 MH7 11MD10 MC18 MC16 MH7 1. |
+      1. MH7 MC16 2MC18 11MD10 MA4 11MD10 MC18 MC16 MH7 1. |
+      1. MH7 2MC16 12MD10 MH7 12MD10 MC16 MH7 1. |
+      1. 3MH7 12MD10 MH7 12MD10 2MH7 1. |
+      3. 27MH7 2.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'van-gogh-starry-night',
+    title: '梵高·星空夜月微缩画',
+    category: 'celebrity',
+    tag: '世界名画',
+    difficulty: '★★★★★',
+    desc: '32×32像素艺术巨作。精巧微缩还原《星月夜》流动的金黄星云、幽蓝夜空、村落暖光与挺拔如火的黑色丝柏树，小红书极具治愈感的挂画款。',
+    matrix: decodeGrid(`
+      32. |
+      1. 30MH7 1. |
+      1. MH7 28MD10 MH7 1. |
+      1. MH7 22MD10 MA4 5MD10 MH7 1. |
+      1. MH7 20MD10 5MA4 3MD10 MH7 1. |
+      1. MH7 4MD10 MB2 3MD10 MA4 10MD10 3MA4 MH1 3MA4 2MD10 MH7 1. |
+      1. MH7 4MD10 MH7 MB2 5MA4 8MD10 2MA4 3MH1 2MA4 2MD10 MH7 1. |
+      1. MH7 4MD10 MH7 MB2 5MA4 7MD10 2MA4 5MH1 2MA4 MD10 MH7 1. |
+      1. MH7 4MC10 MH7 MB2 2MA4 MH1 3MA4 7MC10 2MA4 3MH1 2MA4 2MC10 MH7 1. |
+      1. MH7 3MC10 MB2 MH7 2MB2 4MA4 8MC10 3MA4 MH1 3MA4 2MC10 MH7 1. |
+      1. MH7 3MC10 MB2 MH7 2MB2 4MA4 5MC10 MA4 3MC10 5MA4 3MC10 MH7 1. |
+      1. MH7 2MC10 MC18 MB2 MH7 2MB2 MC10 MA4 5MC10 5MA4 3MC10 MA4 5MC10 MH7 1. |
+      1. MH7 3MC10 MB2 MH7 2MB2 MC18 6MC10 5MA4 3MC10 3MC18 3MC10 MH7 1. |
+      1. MH7 3MC10 MB2 MH7 2MB2 4MC18 2MC10 3MA4 6MC18 6MC10 MH7 1. |
+      1. MH7 3MC10 MB2 MH7 2MB2 4MC10 5MC18 3MA4 9MC10 MH7 1. |
+      1. MH7 3MC10 MB2 MH7 2MB2 MC11 6MC10 5MA4 9MC10 MH7 1. |
+      1. MH7 3MC4 MB2 MH7 2MB2 MC4 7MC11 MC4 MA4 11MC4 MH7 1. |
+      1. MH7 3MC4 MB2 MH7 2MB2 8MC4 4MC11 9MC4 MH7 1. |
+      1. MH7 3MC4 MB2 MH7 2MB2 21MC4 MH7 1. |
+      1. MH7 3MC4 MB2 MH7 2MB2 21MC4 MH7 1. |
+      1. MH7 3MC4 MB2 MH7 3MB2 10MC4 MH7 9MC4 MH7 1. |
+      1. MH7 3MC4 MB2 MH7 3MB2 9MC4 3MH7 8MC4 MH7 1. |
+      1. MH7 2MC4 2MB2 MH7 3MB2 9MC4 3MH7 8MC4 MH7 1. |
+      1. MH7 2MC4 2MB2 MH7 3MB2 8MC4 5MH7 7MC4 MH7 1. |
+      1. MH7 2MD10 2MB2 MH7 3MB2 8MD10 5MH7 7MD10 MH7 1. |
+      1. MH7 2MD10 2MB2 MH7 3MB2 7MD10 3MH7 MA4 3MH7 6MD10 MH7 1. |
+      1. MH7 2MD10 2MB2 MH7 3MB2 4MD10 MA4 2MD10 7MH7 MD10 MA4 4MD10 MH7 1. |
+      1. MH7 2MD10 2MB2 MH7 3MB2 6MD10 9MH7 5MD10 MH7 1. |
+      1. MH7 2MD10 2MB2 MH7 3MB2 6MD10 9MH7 5MD10 MH7 1. |
+      1. MH7 2MD10 6MB2 20MD10 MH7 1. |
+      1. MH7 2MD10 6MB2 20MD10 MH7 1. |
+      1. 30MH7 1.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'einstein-tongue',
+    title: '爱因斯坦·经典吐舌头肖像',
+    category: 'celebrity',
+    tag: '名人ICON',
+    difficulty: '★★★★☆',
+    desc: '32×32标准画幅。风靡全球的世纪抓拍名场面，蓬松爆炸白发、机智微眯眼眸与俏皮生动的粉红吐舌头，兼备幽默感与科技极客风范。',
+    matrix: decodeGrid(`
+      32. |
+      15. 3MH7 14. |
+      11. 5MH7 MH1 5MH7 10. |
+      9. 3MH7 MD20 7MH1 MD20 3MH7 8. |
+      8. 2MH7 2MD20 9MH1 2MD20 2MH7 7. |
+      7. 2MH7 3MD20 9MH1 3MD20 2MH7 6. |
+      6. 2MH7 4MD20 9MH1 4MD20 2MH7 5. |
+      5. 2MH7 MD20 MH1 2MD20 11MH1 2MD20 MH1 MD20 2MH7 4. |
+      4. 2MH7 5MH1 MD20 9MH1 MD20 5MH1 2MH7 3. |
+      4. MH7 6MH1 11MA12 6MH1 MH7 3. |
+      3. 2MH7 5MH1 12MA18 6MH1 2MH7 2. |
+      3. MH7 6MH1 MA18 4MD7 3MA18 4MD7 7MH1 MH7 2. |
+      3. 2MH7 5MH1 12MA18 6MH1 2MH7 2. |
+      3. 2MH7 5MH1 MA18 4MH7 3MA18 4MH7 6MH1 2MH7 2. |
+      3. MH7 6MH1 12MA18 7MH1 MH7 2. |
+      2. 2MH7 5MH1 MD20 13MA18 MD20 5MH1 2MH7 1. |
+      2. MH7 7MH1 MA18 4MH1 MD20 MF1 4MH1 MA18 MD20 7MH1 MH7 1. |
+      2. 2MH7 5MH1 MD20 MA18 3MH1 5MF1 2MH1 MA18 2MD20 5MH1 2MH7 1. |
+      3. MH7 5MH1 MD20 MA18 3MH1 2MF1 MF10 2MF1 2MH1 MA18 2MD20 5MH1 MH7 2. |
+      3. 3MH7 MH1 3MD20 3MA18 3MF1 MF10 3MF1 2MA18 4MD20 MH1 3MH7 2. |
+      5. MH7 8MD20 2MF1 MF10 2MF1 8MD20 MH7 4. |
+      5. 2MH7 7MD20 2MF1 MF10 2MF1 7MD20 2MH7 4. |
+      6. 2MH7 8MD20 MF1 8MD20 2MH7 5. |
+      6. 3MH7 15MD20 3MH7 5. |
+      5. 2MH7 7MD7 5MH1 7MD7 2MH7 4. |
+      5. MH7 9MD7 4MH1 8MD7 MH7 4. |
+      5. MH7 9MD7 MH1 MH7 MH1 9MD7 MH7 4. |
+      5. MH7 10MD7 MH1 10MD7 MH7 4. |
+      4. 2MH7 21MD7 2MH7 3. |
+      4. MH7 23MD7 MH7 3. |
+      4. MH7 23MD7 MH7 3. |
+      4. 25MH7 3.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'mona-lisa-smile',
+    title: '达芬奇·蒙娜丽莎神秘微笑',
+    category: 'celebrity',
+    tag: '传世名画',
+    difficulty: '★★★★★',
+    desc: '32×32像素微缩油画。精准还原卢浮宫镇馆之宝，温润神秘的嘴角弧度、深褐垂顺长发与墨绿古典罗裙，小红书艺术系拼豆常驻爆款。',
+    matrix: decodeGrid(`
+      32. |
+      32. |
+      2. 28MH7 2. |
+      2. MH7 26MB28 MH7 2. |
+      2. MH7 MB28 12MC18 MA14 11MC18 MB28 MH7 2. |
+      2. MH7 MB28 8MC18 4MA14 MA18 4MA14 7MC18 MB28 MH7 2. |
+      2. MH7 MB28 7MC18 2MA14 7MA18 2MA14 6MC18 MB28 MH7 2. |
+      2. MH7 MB28 6MC18 2MA14 9MA18 2MA14 5MC18 MB28 MH7 2. |
+      2. MH7 MB28 5MC18 3MA14 8MA1 MA18 3MA14 4MC18 MB28 MH7 2. |
+      2. MH7 MB28 4MC18 3MA14 MA18 8MA1 2MA18 3MA14 3MC18 MB28 MH7 2. |
+      2. MH7 MB28 4MC18 3MA14 MA18 8MA1 2MA18 3MA14 3MC18 MB28 MH7 2. |
+      2. MH7 MB28 4MC18 3MA14 MA18 3MD14 3MA18 3MD14 MA18 3MA14 3MC18 MB28 MH7 2. |
+      2. MH7 MB28 4MC18 2MA14 3MA18 MH7 MA18 MA12 3MA18 MH7 3MA18 2MA14 3MC18 MB28 MH7 2. |
+      2. MH7 MB28 3MC18 4MA14 4MA18 MA12 6MA18 4MA14 2MC18 MB28 MH7 2. |
+      2. MH7 MB28 4MC18 3MA14 4MA18 MA12 6MA18 3MA14 3MC18 MB28 MH7 2. |
+      2. MH7 MB28 4MC18 3MA14 11MA18 3MA14 3MC18 MB28 MH7 2. |
+      2. MH7 5MB28 4MA14 2MA18 MA19 MF10 MA19 4MA18 4MA14 4MB28 MH7 2. |
+      2. MH7 5MB28 4MA14 9MA18 4MA14 4MB28 MH7 2. |
+      2. MH7 5MB28 5MA14 7MA18 4MA14 5MB28 MH7 2. |
+      2. MH7 5MB28 8MA14 MA18 7MA14 5MB28 MH7 2. |
+      2. MH7 5MB28 16MA14 5MB28 MH7 2. |
+      2. MH7 5MB28 6MA14 5MA18 5MA14 5MB28 MH7 2. |
+      2. MH7 4MB28 8MB2 3MA18 8MB2 3MB28 MH7 2. |
+      2. MH7 4MB28 9MB2 MA18 9MB2 3MB28 MH7 2. |
+      2. MH7 3MB28 10MB2 MA18 10MB2 2MB28 MH7 2. |
+      2. MH7 3MB28 6MB2 9MA18 6MB2 2MB28 MH7 2. |
+      2. MH7 3MB28 5MB2 11MA18 5MB2 2MB28 MH7 2. |
+      2. MH7 3MB28 6MB2 9MA18 6MB2 2MB28 MH7 2. |
+      2. MH7 2MB28 11MB2 MA18 11MB2 MB28 MH7 2. |
+      2. 3MH7 23MB2 2MH7 2. |
+      4. MH7 23MB2 MH7 3. |
+      4. 25MH7 3.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'pearl-earring-girl',
+    title: '维米尔·戴珍珠耳环的少女',
+    category: 'celebrity',
+    tag: '世界名画',
+    difficulty: '★★★★★',
+    desc: '32×32高阶微缩画幅。侧身回眸的柔美神态、纯白闪耀的巨大珍珠耳环、鲜活宝蓝与姜黄交织的裹头巾，复古油画质感拉满。',
+    matrix: decodeGrid(`
+      32. |
+      15. 3MH7 14. |
+      2. 14MH7 MC4 13MH7 2. |
+      2. MH7 9MD10 9MC4 8MD10 MH7 2. |
+      2. MH7 7MD10 13MC4 6MD10 MH7 2. |
+      2. MH7 6MD10 7MC4 3MA6 5MC4 5MD10 MH7 2. |
+      2. MH7 5MD10 9MC4 5MA6 3MC4 4MD10 MH7 2. |
+      2. MH7 5MD10 7MC4 MA18 MC4 7MA6 MC4 4MD10 MH7 2. |
+      2. MH7 4MD10 5MC4 2MA18 MA1 4MA18 5MA6 2MC4 3MD10 MH7 2. |
+      2. MH7 4MD10 4MC4 MA18 5MA1 3MA18 4MA6 2MC4 3MD10 MH7 2. |
+      2. MH7 4MD10 4MC4 7MA1 2MA18 5MA6 MC4 3MD10 MH7 2. |
+      2. MH7 4MD10 3MC4 MA18 7MA1 3MA18 4MA6 MC4 3MD10 MH7 2. |
+      2. MH7 3MD10 4MC4 4MA1 MH1 4MA1 2MA18 4MA6 2MC4 2MD10 MH7 2. |
+      2. MH7 4MD10 3MC4 MA18 2MA1 3MH7 2MA1 3MA18 4MA6 MC4 3MD10 MH7 2. |
+      2. MH7 4MD10 2MC4 2MA18 3MA1 MH7 3MA1 4MA18 3MA6 MC4 3MD10 MH7 2. |
+      2. MH7 4MD10 3MC4 2MA18 5MA1 2MA18 MH1 MA18 4MA6 MC4 3MD10 MH7 2. |
+      2. MH7 4MD10 3MC4 4MA18 MF10 3MA18 3MH1 MC4 4MA6 3MD10 MH7 2. |
+      2. MH7 5MD10 2MC4 2MA18 5MF10 5MH1 2MC4 2MA6 3MD10 MH7 2. |
+      2. MH7 5MD10 3MC4 3MA18 MF10 3MA18 MD20 2MH1 4MC4 MA6 3MD10 MH7 2. |
+      2. MH7 6MD10 2MC4 8MA18 MH1 4MC4 5MD10 MH7 2. |
+      2. MH7 7MD10 2MC4 7MA18 4MC4 6MD10 MH7 2. |
+      2. MH7 9MD10 3MC4 MA18 5MC4 8MD10 MH7 2. |
+      2. MH7 11MD10 5MH1 10MD10 MH7 2. |
+      2. MH7 5MD10 17MD14 4MD10 MH7 2. |
+      2. MH7 5MD10 18MD14 3MD10 MH7 2. |
+      2. MH7 4MD10 19MD14 3MD10 MH7 2. |
+      2. MH7 4MD10 19MD14 3MD10 MH7 2. |
+      2. MH7 4MD10 19MD14 3MD10 MH7 2. |
+      2. MH7 4MD10 20MD14 2MD10 MH7 2. |
+      2. 4MH7 21MD14 3MH7 2. |
+      5. MH7 21MD14 MH7 4. |
+      5. 23MH7 4.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'jay-chou-fantasy',
+    title: '周杰伦·范特西红色卫衣',
+    category: 'celebrity',
+    tag: '音乐顶流',
+    difficulty: '★★★★☆',
+    desc: '32×32标准画幅。华语乐坛划时代神专《范特西》红卫衣经典形象，标志性红色连帽衫遮眸微扬侧脸，唤醒千禧年青春回忆。',
+    matrix: decodeGrid(`
+      32. |
+      32. |
+      15. 3MH7 14. |
+      11. 5MH7 MF10 5MH7 10. |
+      9. 3MH7 9MF10 3MH7 8. |
+      8. 2MH7 13MF10 2MH7 7. |
+      7. 2MH7 7MF10 MF12 7MF10 2MH7 6. |
+      6. 2MH7 5MF10 7MF12 5MF10 2MH7 5. |
+      6. MH7 4MF10 11MF12 4MF10 MH7 5. |
+      5. 2MH7 3MF10 13MF12 3MF10 2MH7 4. |
+      5. MH7 4MF10 6MF12 MA18 6MF12 4MF10 MH7 4. |
+      5. MH7 3MF10 4MF12 7MA18 4MF12 3MF10 MH7 4. |
+      5. MH7 3MF10 MF12 13MH7 MF12 3MF10 MH7 4. |
+      4. 2MH7 3MF10 MF12 12MH7 2MF12 3MF10 2MH7 3. |
+      4. MH7 3MF10 2MF12 12MH7 3MF12 3MF10 MH7 3. |
+      4. 2MH7 3MF10 2MF12 2MA18 6MH7 MH1 MH7 MA18 2MF12 3MF10 2MH7 3. |
+      5. MH7 3MF10 MF12 4MA18 7MH7 2MA18 MF12 3MF10 MH7 4. |
+      5. MH7 3MF10 2MF12 4MA18 MA12 4MH7 2MA18 2MF12 3MF10 MH7 4. |
+      5. MH7 4MF10 MF12 4MA18 MA12 MA18 MH7 4MA18 MF12 4MF10 MH7 4. |
+      5. 2MH7 3MF10 MF12 4MA18 MA12 6MA18 MF12 3MF10 2MH7 4. |
+      6. MH7 4MF10 MF12 2MA18 4MA14 3MA18 MF12 4MF10 MH7 5. |
+      6. 2MH7 5MF10 7MA18 5MF10 2MH7 5. |
+      5. 4MH7 7MF10 MA18 7MF10 4MH7 4. |
+      5. MH7 8MF10 MH1 3MF10 MH1 8MF10 2MH7 3. |
+      4. 2MH7 8MF10 MH1 3MF10 MH1 9MF10 MH7 3. |
+      4. MH7 9MF10 MH1 3MF10 MH1 9MF10 MH7 3. |
+      4. MH7 9MF10 MH1 3MF10 MH1 9MF10 MH7 3. |
+      4. MH7 9MF10 MH1 3MF10 MH1 9MF10 2MH7 2. |
+      3. 2MH7 9MF10 MD20 3MF10 MD20 10MF10 MH7 2. |
+      3. MH7 25MF10 MH7 2. |
+      3. MH7 25MF10 MH7 2. |
+      3. 27MH7 2.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'kobe-bryant-24',
+    title: '科比·曼巴传奇24号紫金战袍',
+    category: 'celebrity',
+    tag: '体坛传奇',
+    difficulty: '★★★★★',
+    desc: '32×32高阶画幅。湖人紫金战袍24号经典咬球衣瞬间，坚毅深邃的曼巴眼神与标志性球衣剪裁，致敬永不落幕的曼巴精神。',
+    matrix: decodeGrid(`
+      15. 3MH7 14. |
+      12. 9MH7 11. |
+      11. 11MH7 10. |
+      10. 13MH7 9. |
+      10. 13MH7 9. |
+      9. 7MH7 MA14 7MH7 8. |
+      9. MH7 MA14 2MH7 7MA14 2MH7 MA14 MH7 8. |
+      9. 3MH7 9MA14 3MH7 8. |
+      9. MH7 13MA14 MH7 8. |
+      8. 2MH7 13MA14 2MH7 7. |
+      8. MH7 3MA14 2MH7 5MA14 2MH7 3MA14 MH7 7. |
+      8. 2MH7 3MA14 3MH7 MA12 3MH7 3MA14 2MH7 7. |
+      9. MH7 2MA14 3MH7 MA14 MA12 MA14 3MH7 2MA14 MH7 8. |
+      9. MH7 3MA14 MH7 2MA14 MA12 2MA14 MH7 3MA14 MH7 8. |
+      9. MH7 6MA14 MA12 6MA14 MH7 8. |
+      9. 2MH7 3MA14 5MH1 3MA14 2MH7 8. |
+      10. 2MH7 2MA14 5MA4 2MA14 2MH7 9. |
+      7. 6MH7 MA14 5MA4 MA14 6MH7 6. |
+      6. 2MH7 2ME8 4MH7 5MA4 4MH7 2ME8 2MH7 5. |
+      6. MH7 MA4 2ME8 13MA4 2ME8 MA4 MH7 5. |
+      6. MH7 MA4 2ME8 13MA4 2ME8 MA4 2MH7 4. |
+      5. 2MH7 MA4 2ME8 4MA4 ME8 3MA4 2ME8 3MA4 2ME8 2MA4 MH7 4. |
+      5. MH7 2MA4 2ME8 3MA4 ME8 9MA4 2ME8 2MA4 MH7 4. |
+      5. MH7 2MA4 2ME8 4MA4 ME8 2MA4 2ME8 4MA4 2ME8 2MA4 MH7 4. |
+      5. MH7 2MA4 2ME8 3MA4 ME8 MA4 ME8 3MA4 ME8 3MA4 2ME8 2MA4 MH7 4. |
+      5. MH7 2MA4 2ME8 13MA4 2ME8 2MA4 MH7 4. |
+      5. MH7 2MA4 2ME8 13MA4 2ME8 2MA4 2MH7 3. |
+      4. 2MH7 2MA4 2ME8 13MA4 2ME8 3MA4 MH7 3. |
+      4. MH7 3MA4 2ME8 13MA4 2ME8 3MA4 MH7 3. |
+      4. MH7 3MA4 2ME8 13MA4 2ME8 3MA4 MH7 3. |
+      4. MH7 3MA4 2ME8 13MA4 2ME8 3MA4 MH7 3. |
+      4. 4MH7 2ME8 13MH7 2ME8 4MH7 3.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'michael-jackson-moonwalk',
+    title: '迈克尔·杰克逊·太空步礼帽',
+    category: 'celebrity',
+    tag: '潮流ICON',
+    difficulty: '★★★★☆',
+    desc: '32×32标准画幅。流行音乐之王标志性斜戴黑礼帽、微卷黑发、单手闪耀白手套与剪影式舞台西装，极简黑白灰高对比张力十足。',
+    matrix: decodeGrid(`
+      32. |
+      14. 3MH7 15. |
+      11. 9MH7 12. |
+      9. 13MH7 10. |
+      9. 13MH7 10. |
+      8. 15MH7 9. |
+      6. 19MH7 7. |
+      5. 4MH7 13MH1 4MH7 6. |
+      5. 11MH7 MA18 9MH7 6. |
+      5. 9MH7 5MA18 7MH7 6. |
+      6. 7MH7 7MA18 5MH7 7. |
+      8. 5MH7 MA18 2MH7 MA18 2MH7 MA18 3MH7 9. |
+      8. 4MH7 9MA18 2MH7 9. |
+      8. 5MH7 7MA18 3MH7 9. |
+      8. 5MH7 7MA18 4MH7 8. |
+      9. 5MH7 2MA18 MF10 2MA18 5MH7 8. |
+      9. 7MH7 MA18 7MH7 8. |
+      9. 5MH7 1. 3MH7 2. 4MH7 8. |
+      7. 19MH7 6. |
+      7. MH7 6MH1 5MH7 6MH1 MH7 6. |
+      7. MH7 6MH1 5MH7 6MH1 2MH7 5. |
+      6. 2MH7 7MH1 MH7 MC4 MH7 8MH1 MH7 5. |
+      6. MH7 8MH1 3MH7 8MH1 MH7 5. |
+      4. 3MH7 9MH1 MH7 9MH1 MH7 5. |
+      4. MH7 21MH1 MH7 5. |
+      3. 2MH7 21MH1 MH7 5. |
+      3. MH7 3MH1 MA4 18MH1 2MH7 4. |
+      3. 2MH7 22MH1 MH7 4. |
+      4. MH7 22MH1 MH7 4. |
+      4. 2MH7 21MH1 MH7 4. |
+      5. MH7 21MH1 MH7 4. |
+      5. 23MH7 4.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'totoro-umbrella',
+    title: '龙猫·雨天撑荷叶伞',
+    category: 'anime',
+    tag: '吉卜力顶流',
+    difficulty: '★★★★☆',
+    desc: '32×32经典画幅。宫崎骏动画传世萌物，胖嘟嘟毛绒大肚皮、倒V小斑纹、圆溜溜呆萌眼珠与头顶撑着的一柄碧绿荷叶小伞。',
+    matrix: decodeGrid(`
+      9. 7MH7 MB9 7MH7 8. |
+      7. 3MH7 13MB9 3MH7 6. |
+      6. 2MH7 17MB9 2MH7 5. |
+      6. MH7 9MB9 MD14 9MB9 MH7 5. |
+      6. 2MH7 8MB9 MD14 8MB9 2MH7 5. |
+      7. MH7 2MD7 6MB9 MD14 6MB9 2MD7 MH7 6. |
+      7. MH7 4MD7 4MH7 MD14 4MH7 4MD7 MH7 6. |
+      6. 2MH7 8MD7 MD14 8MD7 2MH7 5. |
+      6. MH7 19MD7 MH7 5. |
+      6. MH7 19MD7 MH7 5. |
+      6. MH7 5MD7 MH1 7MD7 MH1 5MD7 MH7 5. |
+      6. MH7 4MD7 3MH1 2MD7 MA1 2MD7 3MH1 4MD7 MH7 5. |
+      5. 2MH7 3MD7 2MH1 MH7 2MH1 3MA1 2MH1 MH7 2MH1 3MD7 2MH7 4. |
+      5. 5MH7 MD7 3MH1 MA1 3MH7 MA1 3MH1 MD7 5MH7 4. |
+      5. MH7 5MD7 MA1 MH1 3MA1 MD7 3MA1 MH1 MA1 5MD7 MH7 4. |
+      5. 3MH7 2MD7 3MA1 MD7 5MA1 MD7 3MA1 2MD7 3MH7 4. |
+      5. MH7 2MD7 2MH7 13MA1 3MH7 MD7 MH7 4. |
+      4. 2MH7 3MD7 6MA1 MD7 2MA1 MD7 5MA1 3MD7 2MH7 3. |
+      4. MH7 4MD7 3MA1 MD7 7MA1 MD7 3MA1 4MD7 MH7 3. |
+      4. 2MH7 3MD7 15MA1 3MD7 2MH7 3. |
+      5. MH7 2MD7 17MA1 2MD7 MH7 4. |
+      5. MH7 3MD7 15MA1 3MD7 MH7 4. |
+      5. MH7 3MD7 15MA1 3MD7 MH7 4. |
+      5. 2MH7 2MD7 15MA1 2MD7 2MH7 4. |
+      6. MH7 2MD7 15MA1 2MD7 MH7 5. |
+      6. 2MH7 2MD7 13MA1 2MD7 2MH7 5. |
+      7. MH7 3MD7 11MA1 3MD7 MH7 6. |
+      7. 2MH7 2MD7 11MA1 2MD7 2MH7 6. |
+      8. 2MH7 3MD7 7MA1 3MD7 2MH7 7. |
+      9. 3MH7 4MD7 MA1 4MD7 3MH7 8. |
+      11. 5MH7 MD7 5MH7 10. |
+      15. 3MH7 14.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'no-face-man',
+    title: '千与千寻·无脸男与小红伞',
+    category: 'anime',
+    tag: '吉卜力经典',
+    difficulty: '★★★★☆',
+    desc: '32×32治愈画幅。千与千寻中最温存的守护者，幽邃黑袍中若隐若现的白色图腾面具，手中轻握一柄朱红小伞，极具日式幽玄美感。',
+    matrix: decodeGrid(`
+      32. |
+      32. |
+      32. |
+      15. 3MH7 14. |
+      13. 3MH7 MH1 3MH7 12. |
+      12. 2MH7 2MH1 ME8 2MH1 2MH7 11. |
+      11. 2MH7 2MH1 3ME8 2MH1 2MH7 10. |
+      10. 2MH7 3MH1 3ME8 3MH1 2MH7 9. |
+      10. MH7 2MH1 7ME8 2MH1 MH7 9. |
+      9. 2MH7 3MH1 MH7 3MH1 MH7 3MH1 2MH7 8. |
+      8. 3MH7 3MH1 MH7 3MH1 MH7 3MH1 3MH7 7. |
+      8. 3MH7 2MH1 3MH7 MH1 3MH7 2MH1 3MH7 7. |
+      7. 3MH7 4MH1 MH7 3MH1 MH7 4MH1 3MH7 6. |
+      7. 4MH7 3MH1 MH7 3MH1 MH7 3MH1 4MH7 6. |
+      7. 4MH7 2MH1 ME8 5MH1 ME8 2MH1 4MH7 6. |
+      7. 4MH7 5MH1 MH7 5MH1 4MH7 6. |
+      7. 4MH7 3MH1 5MH7 3MH1 4MH7 6. |
+      6. 6MH7 4MH1 MH7 4MH1 6MH7 5. |
+      6. 7MH7 7MH1 4MH7 MF10 5MH7 2. |
+      6. 8MH7 5MH1 MH7 9MF10 2MH7 1. |
+      7. 9MH7 MH1 2MH7 5MF10 MD14 5MF10 MH7 1. |
+      7. 13MH7 4MF10 MD14 4MF10 2MH7 1. |
+      7. 17MH7 MD14 5MH7 2. |
+      7. 17MH7 MD14 MH7 6. |
+      7. 17MH7 MD14 MH7 6. |
+      7. 17MH7 MD14 MH7 6. |
+      7. 17MH7 MD14 MH7 6. |
+      7. 19MH7 6. |
+      7. 18MH7 7. |
+      7. 18MH7 7. |
+      7. 18MH7 7. |
+      15. 3MH7 14.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'demon-slayer-tanjiro',
+    title: '鬼灭之刃·灶门炭治郎市松羽织',
+    category: 'anime',
+    tag: '顶流热血漫',
+    difficulty: '★★★★★',
+    desc: '32×32高阶复杂画幅。黑绿交错市松格羽织披肩、额间暗红火之神斑纹、日轮花札耳饰与温柔坚毅的赤瞳，工艺层次分明。',
+    matrix: decodeGrid(`
+      32. |
+      15. 3MH7 14. |
+      11. 5MH7 MF12 5MH7 10. |
+      10. 2MH7 2MF12 5MF14 2MF12 2MH7 9. |
+      9. 2MH7 MF12 9MF14 MF12 3MH7 7. |
+      6. 4MH7 14MF14 3MH7 5. |
+      6. MH7 19MF14 MH7 5. |
+      6. 2MH7 18MF14 MH7 5. |
+      7. MH7 8MF14 MA18 8MF14 2MH7 5. |
+      7. MH7 MF12 2MF14 3MF12 6MA18 5MF14 MH7 6. |
+      6. 2MH7 MF12 3MF14 MF12 8MA18 3MF14 MF12 2MH7 5. |
+      6. MH7 3MF12 MF14 MA18 2MF12 5MA18 MF12 2MA18 2MF14 2MF12 MH7 5. |
+      6. 2MH7 2MF12 MF14 MA18 3MF12 3MA18 3MF12 MA18 MF14 2MF12 2MH7 5. |
+      7. MH7 5MF12 MH1 2MF12 MA12 2MF12 MH1 5MF12 MH7 6. |
+      7. MH7 2MF12 2MA18 3MF12 MA18 MA12 MA18 3MF12 2MA18 2MF12 MH7 6. |
+      7. MH7 3MF12 2MA18 MF12 2MA18 MA12 2MA18 MF12 2MA18 3MF12 MH7 6. |
+      7. MH7 2MH1 MF12 11MA18 2MF12 2MH7 6. |
+      7. MH7 MH1 MF10 MF12 4MA18 3MF12 4MA18 MF12 2MH7 7. |
+      7. MH7 2MH1 MH7 MF12 9MA18 MF12 2MH7 8. |
+      7. MH7 2MH1 2MH7 MF12 7MA18 MF12 2MH7 9. |
+      5. 11MH7 MA18 8MH7 7. |
+      5. 23MH7 4. |
+      5. 3MH7 6MB2 2MH7 6MB2 2MH7 3MB2 MH7 4. |
+      4. 2MH7 21MB2 2MH7 3. |
+      4. MH7 5MB2 2MH7 6MB2 2MH7 6MB2 3MH7 3. |
+      4. MH7 5MB2 2MH7 6MB2 2MH7 6MB2 3MH7 3. |
+      4. MH7 23MB2 MH7 3. |
+      3. 2MH7 MB2 2MH7 6MB2 2MH7 6MB2 2MH7 4MB2 2MH7 2. |
+      3. MH7 2MB2 2MH7 6MB2 2MH7 6MB2 2MH7 5MB2 MH7 2. |
+      3. MH7 25MB2 MH7 2. |
+      3. MH7 6MB2 2MH7 6MB2 2MH7 6MB2 2MH7 MB2 MH7 2. |
+      3. 27MH7 2.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'one-piece-luffy',
+    title: '海贼王·路飞草帽豪迈大笑',
+    category: 'anime',
+    tag: '热血巨作',
+    difficulty: '★★★★☆',
+    desc: '32×32经典画幅。草帽红丝带微扬、胸前红坎肩与伤痕、豪迈咧嘴哈哈大笑的无畏神态，海迷圈人手必备的经典图纸。',
+    matrix: decodeGrid(`
+      32. |
+      15. 3MH7 14. |
+      10. 6MH7 MA4 6MH7 9. |
+      9. 2MH7 11MA4 2MH7 8. |
+      8. 2MH7 13MA4 2MH7 7. |
+      7. 2MH7 15MA4 2MH7 6. |
+      4. 4MH7 17MA4 4MH7 3. |
+      3. 2MH7 23MA4 2MH7 2. |
+      2. 2MH7 4MA4 8MF10 MA18 8MF10 4MA4 2MH7 1. |
+      2. MH7 10MA4 7MA18 10MA4 MH7 1. |
+      2. 2MH7 8MA4 9MA18 8MA4 2MH7 1. |
+      3. 2MH7 5MA4 MH7 11MA18 MH7 5MA4 2MH7 2. |
+      4. 4MH7 3MA4 MA18 3MH7 3MA18 3MH7 MA18 3MA4 4MH7 3. |
+      7. 4MH7 11MA18 4MH7 6. |
+      9. MH7 3MA18 MA12 9MA18 MH7 8. |
+      9. 2MH7 2MA18 MA12 8MA18 2MH7 8. |
+      10. MH7 2MA18 MF10 5MH1 MF10 2MA18 MH7 9. |
+      10. MH7 3MA18 6MF10 2MA18 MH7 9. |
+      10. 2MH7 2MA18 5MF10 2MA18 2MH7 9. |
+      11. 2MH7 MA18 5MF10 MA18 2MH7 10. |
+      12. 4MH7 MA18 4MH7 11. |
+      5. 23MH7 4. |
+      5. MH7 7MF10 7MA18 7MF10 MH7 4. |
+      4. 2MH7 8MF10 2MF12 2MA18 MF12 8MF10 2MH7 3. |
+      4. MH7 9MF10 MA18 3MF12 MA18 9MF10 MH7 3. |
+      4. MH7 9MF10 2MF12 MA18 2MF12 9MF10 MH7 3. |
+      4. MH7 11MF10 MA18 11MF10 MH7 3. |
+      3. 2MH7 23MF10 2MH7 2. |
+      3. MH7 25MF10 MH7 2. |
+      3. MH7 25MF10 MH7 2. |
+      3. MH7 25MF10 MH7 2. |
+      3. 27MH7 2.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'naruto-sage-mode',
+    title: '火影忍者·鸣人仙术一字横瞳',
+    category: 'anime',
+    tag: '热血经典',
+    difficulty: '★★★★★',
+    desc: '32×32高阶画幅。佩恩之战经典封神形象，耀眼金黄刺猬短发、仙人模式橙红眼影与一字横瞳、木叶护额与六道猫纹，羁绊感十足。',
+    matrix: decodeGrid(`
+      32. |
+      14. 5MH7 13. |
+      7. 8MH7 3MA4 8MH7 6. |
+      5. 3MH7 5MA4 2MH7 3MA4 2MH7 5MA4 3MH7 4. |
+      5. MH7 21MA4 MH7 4. |
+      5. MH7 21MA4 MH7 4. |
+      5. 2MH7 19MA4 2MH7 4. |
+      6. MH7 2MA4 14MH7 3MA4 MH7 5. |
+      6. MH7 2MA4 3MH7 8MD20 3MH7 3MA4 MH7 5. |
+      6. 2MH7 MA4 3MH7 4MD20 MA18 3MD20 3MH7 2MA4 2MH7 5. |
+      7. MH7 MA4 4MH7 7MA18 3MH7 2MA4 MH7 6. |
+      7. 5MH7 9MA18 5MH7 6. |
+      9. MH7 4MA7 4MA18 4MA7 MH7 9. |
+      9. MH7 MA7 MA6 MH7 MA6 4MA18 MA7 MA6 MH7 MA6 MH7 9. |
+      9. MH7 4MA7 4MA18 4MA7 2MH7 8. |
+      9. MH7 13MA18 MH7 8. |
+      9. 4MH7 7MA18 4MH7 8. |
+      9. 4MH7 7MA18 4MH7 8. |
+      9. 2MH7 11MA18 2MH7 8. |
+      10. 2MH7 9MA18 2MH7 9. |
+      11. 2MH7 7MA18 2MH7 10. |
+      5. 11MH7 MA18 11MH7 4. |
+      5. MH7 8MF12 5MH7 8MF12 MH7 4. |
+      4. 2MH7 9MF12 4MH7 8MF12 2MH7 3. |
+      4. MH7 10MF12 3MH7 10MF12 MH7 3. |
+      4. MH7 11MF12 MH7 11MF12 MH7 3. |
+      4. MH7 23MF12 MH7 3. |
+      3. 2MH7 23MF12 2MH7 2. |
+      3. MH7 25MF12 MH7 2. |
+      3. MH7 25MF12 MH7 2. |
+      3. MH7 25MF12 MH7 2. |
+      3. 27MH7 2.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'pokemon-gengar-laugh',
+    title: '宝可梦·耿鬼暗夜邪魅狂笑',
+    category: 'games',
+    tag: '宝可梦顶流',
+    difficulty: '★★★★☆',
+    desc: '32×32潮流爆款。幽灵系人气霸主，暗夜深紫圆胖身形、猩红凶光大眼与标志性锯齿白牙坏笑，电竞桌面挂饰与摆件首选。',
+    matrix: decodeGrid(`
+      32. |
+      32. |
+      32. |
+      5. 5MH7 12. 5MH7 5. |
+      5. MH7 3ME4 2MH7 10. 2MH7 3ME4 MH7 5. |
+      5. MH7 4ME4 3MH7 2. 3MH7 1. 3MH7 4ME4 2MH7 4. |
+      4. 2MH7 6ME4 4MH7 ME8 3MH7 7ME4 MH7 4. |
+      4. MH7 7ME4 9ME8 6ME4 MH7 4. |
+      4. MH7 5ME4 13ME8 4ME4 MH7 4. |
+      4. MH7 3ME4 17ME8 2ME4 MH7 4. |
+      4. 2MH7 ME4 19ME8 2MH7 4. |
+      5. MH7 21ME8 MH7 4. |
+      4. 2MH7 4ME8 MF10 MH1 2MF10 5ME8 MF10 MH1 2MF10 4ME8 2MH7 3. |
+      4. MH7 5ME8 3MF10 6ME8 3MF10 6ME8 MH7 3. |
+      4. MH7 6ME8 2MF10 7ME8 2MF10 6ME8 MH7 3. |
+      4. MH7 6ME8 MF10 8ME8 MF10 7ME8 MH7 3. |
+      3. 2MH7 23ME8 2MH7 2. |
+      3. MH7 25ME8 MH7 2. |
+      3. 2MH7 4ME8 15MH1 4ME8 2MH7 2. |
+      4. MH7 5ME8 MH1 11ME4 MH1 5ME8 MH7 3. |
+      3. 2MH7 5ME8 13MH1 5ME8 2MH7 2. |
+      3. MH7 7ME8 11MH1 7ME8 MH7 2. |
+      3. 2MH7 6ME8 11MH1 6ME8 2MH7 2. |
+      4. 2MH7 21ME8 2MH7 3. |
+      5. 2MH7 19ME8 2MH7 4. |
+      6. 2MH7 17ME8 2MH7 5. |
+      7. 3MH7 ME8 ME4 9ME8 ME4 ME8 3MH7 6. |
+      8. 2MH7 3ME4 7ME8 3ME4 2MH7 7. |
+      8. MH7 5ME4 2MH7 ME8 2MH7 5ME4 MH7 7. |
+      8. 2MH7 3ME4 7MH7 3ME4 2MH7 7. |
+      9. 2MH7 ME4 2MH7 5. 2MH7 ME4 2MH7 8. |
+      10. 3MH7 7. 3MH7 9.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'pokemon-mewtwo',
+    title: '宝可梦·超梦灵能力场',
+    category: 'games',
+    tag: '传奇怪兽',
+    difficulty: '★★★★★',
+    desc: '32×32高阶复杂画幅。第一世代最强神兽，流线银白身躯、幽紫粗壮长尾与双掌凝聚的念力光辉，冷酷强大霸气外露。',
+    matrix: decodeGrid(`
+      32. |
+      32. |
+      32. |
+      32. |
+      10. 12MH7 10. |
+      10. MH7 10MD20 2MH7 9. |
+      9. 2MH7 11MD20 MH7 9. |
+      9. MH7 12MD20 MH7 9. |
+      9. MH7 12MD20 MH7 9. |
+      9. 2MH7 2MD20 2ME4 3MD20 2ME4 MD20 2MH7 9. |
+      10. MH7 2MD20 ME4 4MD20 ME4 2MD20 MH7 10. |
+      10. MH7 10MD20 MH7 10. |
+      10. 2MH7 3MD20 2ME8 3MD20 2MH7 2. 3MH7 5. |
+      11. 2MH7 6MD20 2MH7 3. MH7 ME8 MH7 5. |
+      6. 3MH7 3. MH7 6MD20 MH7 3. 2MH7 ME8 MH7 5. |
+      4. 3MH7 ME8 5MH7 6MD20 2MH7 2. MH7 ME8 2MH7 5. |
+      4. MH7 5ME8 2MH7 8MD20 MH7 1. 2MH7 2ME8 2MH7 4. |
+      3. 2MH7 2ME8 MH1 2ME8 2MH7 8MD20 MH7 1. MH7 4ME8 2MH7 3. |
+      3. MH7 2ME8 3MH1 2ME8 MH7 8MD20 3MH7 5ME8 MH7 3. |
+      3. 2MH7 2ME8 MH1 2ME8 2MH7 MD20 6ME8 MD20 2MH7 6ME8 MH7 3. |
+      4. MH7 5ME8 2MH7 8ME8 MH7 6ME8 2MH7 3. |
+      4. 3MH7 ME8 3MH7 16ME8 MH7 4. |
+      6. 3MH7 1. MH7 15ME8 2MH7 4. |
+      10. MH7 15ME8 MH7 5. |
+      10. MH7 10ME8 6MH7 5. |
+      10. MH7 10ME8 3MH7 ME8 3MH7 4. |
+      10. 2MH7 8ME8 2MH7 5ME8 MH7 4. |
+      11. 2MH7 6ME8 3MH7 2ME8 MH1 2ME8 2MH7 3. |
+      12. 9MH7 2ME8 3MH1 2ME8 MH7 3. |
+      20. 2MH7 2ME8 MH1 2ME8 2MH7 3. |
+      21. MH7 5ME8 MH7 4. |
+      21. 3MH7 ME8 3MH7 4.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'shin-chan-action-mask',
+    title: '蜡笔小新·动感超人武装变身',
+    category: 'anime',
+    tag: '童年搞怪',
+    difficulty: '★★★★☆',
+    desc: '32×32经典画幅。小新最崇拜的动感超人全副武装，绿红相间超人头盔、招牌浓密毛毛虫粗眉与肉嘟嘟包子脸，可爱爆棚。',
+    matrix: decodeGrid(`
+      9. 3MH7 9. 3MH7 8. |
+      7. 3MH7 MF10 3MH7 1. 3MH7 1. 3MH7 MF10 3MH7 6. |
+      7. MH7 5MF10 3MH7 MB9 3MH7 5MF10 MH7 6. |
+      6. 2MH7 5MF10 7MB9 5MF10 2MH7 5. |
+      6. MH7 7MF10 5MB9 7MF10 MH7 5. |
+      6. 2MH7 5MF10 7MB9 5MF10 2MH7 5. |
+      7. MH7 5MF10 7MB9 5MF10 MH7 6. |
+      7. MH7 2MB9 MF10 MB9 MF10 7MB9 MF10 MB9 MF10 2MB9 MH7 6. |
+      7. MH7 2MB9 6MH7 2MB9 6MH7 MB9 MH7 6. |
+      7. MH7 2MB9 6MH7 2MB9 6MH7 MB9 MH7 6. |
+      6. 2MH7 MB9 7MF10 MA18 7MF10 MB9 2MH7 5. |
+      6. MH7 3MB9 2MF10 MH7 6MA18 MH7 3MF10 3MB9 MH7 5. |
+      6. 2MH7 2MB9 MF10 3MH7 4MA18 3MH7 MA18 MF10 2MB9 2MH7 5. |
+      7. MH7 2MB9 2MH7 MH1 2MH7 2MA18 2MH7 MH1 2MH7 MA18 2MB9 MH7 6. |
+      7. MH7 2MB9 MA18 3MH7 4MA18 3MH7 2MA18 2MB9 MH7 6. |
+      7. MH7 4MA18 MH7 6MA18 MH7 3MA18 2MB9 MH7 6. |
+      6. 2MH7 16MA18 2MH7 6. |
+      6. MH7 16MA18 2MH7 7. |
+      6. 2MH7 15MA18 MH7 8. |
+      7. MH7 15MA18 MH7 8. |
+      7. 3MH7 12MA18 2MH7 8. |
+      6. 7MH7 7MA18 7MH7 5. |
+      6. MH7 9MF10 MA4 9MF10 MH7 5. |
+      5. 2MH7 8MF10 3MA4 8MF10 2MH7 4. |
+      5. MH7 9MF10 MA4 MC4 MA4 9MF10 MH7 4. |
+      5. MH7 8MF10 5MA4 8MF10 MH7 4. |
+      5. MH7 8MF10 5MA4 8MF10 MH7 4. |
+      4. 2MH7 21MF10 2MH7 3. |
+      4. MH7 23MF10 MH7 3. |
+      4. MH7 23MF10 MH7 3. |
+      4. MH7 23MF10 MH7 3. |
+      4. 25MH7 3.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'sanrio-kuromi-wings',
+    title: '三丽鸥·酷洛米恶魔之翼',
+    category: 'anime',
+    tag: '甜酷天花板',
+    difficulty: '★★★★☆',
+    desc: '32×32顶流画幅。小红书三丽鸥顶流爆款，经典黑紫恶魔耳、额间粉色小骷髅头与傲娇张开的蝙蝠小翅膀，甜酷少女心收割机。',
+    matrix: decodeGrid(`
+      7. 3MH7 12. 3MH7 7. |
+      6. 2MH7 ME8 2MH7 10. 2MH7 ME8 2MH7 6. |
+      6. MH7 3ME8 3MH7 6. 3MH7 3ME8 MH7 6. |
+      6. 2MH7 ME8 4MH7 6. 4MH7 ME8 2MH7 6. |
+      7. 6MH7 2. 3MH7 1. 6MH7 7. |
+      7. 19MH7 6. |
+      6. 20MH7 6. |
+      6. 20MH7 6. |
+      6. 10MH7 MF1 9MH7 6. |
+      6. 7MH7 MF1 MH7 3MF1 8MH7 6. |
+      6. 5MH7 6MF1 MH7 MF1 7MH7 6. |
+      6. 7MH7 MF1 MH7 3MF1 8MH7 6. |
+      7. 6MH7 3MH1 MF1 3MH1 6MH7 6. |
+      6. 6MH7 MH1 MH7 5MH1 MH7 MH1 6MH7 5. |
+      1. 4MH7 1. 5MH7 MH1 3MH7 3MH1 3MH7 MH1 9MH7 1. |
+      1. 12MH7 MH1 2MH7 MH1 2MH7 MH1 11MH7 1. |
+      1. 5MH7 1. 3MH7 2MH1 3MH7 3MH1 3MH7 2MH1 8MH7 1. |
+      1. 10MH7 2MH1 MH7 2MH1 MH7 2MH1 MH7 2MH1 9MH7 1. |
+      1. 10MH7 MF1 9MH1 MF1 9MH7 1. |
+      2. 10MH7 9MH1 10MH7 1. |
+      2. 5MH7 1. 5MH7 7MH1 5MH7 1. 4MH7 2. |
+      2. 4MH7 3. 7MH7 MH1 7MH7 2. 4MH7 2. |
+      2. 4MH7 4. 13MH7 4. 3MH7 2. |
+      2. 3MH7 6. 11MH7 5. 3MH7 2. |
+      15. 3MH7 14. |
+      32. |
+      32. |
+      32. |
+      32. |
+      32. |
+      32. |
+      32.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'sanrio-pochacco-bowtie',
+    title: '三丽鸥·帕恰狗黑耳红领结',
+    category: 'anime',
+    tag: '治愈萌宠',
+    difficulty: '★★★☆☆',
+    desc: '32×32治愈画幅。软萌治愈界扛把子，两只黑色大垂耳、头顶呆萌小呆毛与脖颈上端正系着的大红绅士领结，纯净温润。',
+    matrix: decodeGrid(`
+      32. |
+      32. |
+      32. |
+      15. 3MH7 14. |
+      13. 7MH7 12. |
+      7. 3MH7 3. 7MH7 3. 3MH7 6. |
+      6. 21MH7 5. |
+      5. 7MH7 9MH1 7MH7 4. |
+      4. 7MH7 11MH1 7MH7 3. |
+      4. 5MH7 15MH1 5MH7 3. |
+      4. 5MH7 15MH1 5MH7 3. |
+      4. 4MH7 5MH1 MH7 5MH1 MH7 5MH1 4MH7 3. |
+      4. 4MH7 4MH1 3MH7 3MH1 3MH7 4MH1 4MH7 3. |
+      3. 5MH7 3MH1 5MH7 MH1 5MH7 3MH1 5MH7 2. |
+      3. 4MH7 5MH1 3MH7 MH1 MH7 MH1 3MH7 5MH1 4MH7 2. |
+      3. 5MH7 5MH1 7MH7 5MH1 5MH7 2. |
+      4. 4MH7 8MH1 MH7 8MH1 4MH7 3. |
+      4. 4MH7 8MH1 MH7 8MH1 4MH7 3. |
+      4. 5MH7 7MH1 MH7 7MH1 5MH7 3. |
+      4. 5MH7 15MH1 5MH7 3. |
+      4. 7MH7 11MH1 7MH7 3. |
+      5. 7MH7 4MH1 MF10 4MH1 7MH7 4. |
+      6. 5MH7 7MF10 MH7 3MF10 5MH7 5. |
+      7. 4MH7 11MF10 4MH7 6. |
+      10. MH7 7MF10 MH7 3MF10 MH7 9. |
+      10. MH7 MF10 4MH7 MF10 4MH7 MF10 MH7 9. |
+      10. 3MH7 2. 3MH7 2. 3MH7 9. |
+      32. |
+      32. |
+      32. |
+      32. |
+      32.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'spongebob-squarepants',
+    title: '海绵宝宝·比奇堡开心大笑',
+    category: 'anime',
+    tag: '欧美童年',
+    difficulty: '★★★★☆',
+    desc: '32×32经典画幅。比奇堡头号乐天派，鲜黄多孔方形海绵身材、湛蓝双眼、两颗标志性雪白大板牙与红领带衬衫，满满正能量。',
+    matrix: decodeGrid(`
+      32. |
+      32. |
+      32. |
+      6. 20MH7 6. |
+      6. MH7 18MA4 MH7 6. |
+      6. MH7 2MA4 MB5 MA4 MH7 MA4 MH7 5MA4 MH7 MA4 MH7 3MA4 MH7 6. |
+      6. MH7 MA4 3MB5 MH7 MH1 MH7 5MA4 MH7 MH1 MH7 MA4 MB5 MA4 MH7 6. |
+      6. MH7 2MA4 MB5 5MH1 3MA4 5MH1 2MB5 MH7 6. |
+      6. MH7 2MA4 3MH1 MC4 3MH1 MA4 3MH1 MC4 3MH1 MA4 MH7 6. |
+      6. MH7 2MA4 2MH1 3MC4 MH1 3MA4 MH1 3MC4 2MH1 MA4 MH7 6. |
+      6. MH7 MA4 2MH1 2MC4 MH7 2MC4 3MA4 2MC4 MH7 2MC4 2MH1 MH7 6. |
+      6. MH7 2MA4 2MH1 3MC4 5MA4 3MC4 2MH1 MA4 MH7 6. |
+      6. MH7 2MA4 3MH1 MC4 2MH1 3MA4 2MH1 MC4 3MH1 MA4 MH7 6. |
+      6. MH7 3MA4 5MH1 3MA4 5MH1 2MA4 MH7 6. |
+      6. MH7 3MA4 3MH7 2MH1 2MH7 2MH1 4MH7 2MA4 MH7 6. |
+      6. MH7 MA4 MB5 3MA4 MF10 2MH1 2MF10 2MH1 2MF10 4MA4 MH7 6. |
+      6. MH7 3MB5 3MA4 8MF10 4MA4 MH7 6. |
+      6. MH7 MA4 MB5 4MA4 7MF10 2MA4 MB5 2MA4 MH7 6. |
+      6. MH7 7MA4 5MF10 2MA4 3MB5 MA4 MH7 6. |
+      6. MH7 15MA4 MB5 2MA4 MH7 6. |
+      6. MH7 18MA4 MH7 6. |
+      6. MH7 18MA4 MH7 6. |
+      6. MH7 9MH1 MF10 8MH1 MH7 6. |
+      6. MH7 8MH1 3MF10 7MH1 MH7 6. |
+      6. MH7 8MH1 3MF10 7MH1 MH7 6. |
+      6. MH7 18MD14 MH7 6. |
+      6. MH7 18MD14 MH7 6. |
+      6. MH7 18MD14 MH7 6. |
+      6. MH7 18MD14 MH7 6. |
+      6. 20MH7 6. |
+      32. |
+      32.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'patrick-star',
+    title: '派大星·夏威夷沙滩裤乐呵呵',
+    category: 'anime',
+    tag: '欧美童年',
+    difficulty: '★★★☆☆',
+    desc: '32×32治愈画幅。海绵宝宝一生的挚友，水粉五角海星身躯、经典绿底紫花夏威夷沙滩裤与没心没肺的乐呵憨态，解压神器。',
+    matrix: decodeGrid(`
+      32. |
+      32. |
+      32. |
+      14. 5MH7 13. |
+      14. MH7 3MF1 2MH7 12. |
+      13. 2MH7 4MF1 MH7 12. |
+      12. 2MH7 5MF1 2MH7 11. |
+      11. 2MH7 7MF1 2MH7 10. |
+      11. MH7 MF1 3MH7 MF1 3MH7 MF1 2MH7 9. |
+      10. 2MH7 10MF1 MH7 9. |
+      9. 2MH7 3MF1 MH7 3MF1 MH7 3MF1 2MH7 8. |
+      9. MH7 13MF1 MH7 8. |
+      9. MH7 13MF1 MH7 8. |
+      6. 4MH7 13MF1 4MH7 5. |
+      4. 3MH7 MF1 MH7 6MF1 3MF10 6MF1 MH7 MF1 3MH7 3. |
+      4. MH7 10MF1 3MF10 10MF1 MH7 3. |
+      3. 2MH7 11MF1 MF10 11MF1 2MH7 2. |
+      3. MH7 25MF1 MH7 2. |
+      3. 2MH7 23MF1 2MH7 2. |
+      4. MH7 23MF1 MH7 3. |
+      4. 3MH7 19MF1 3MH7 3. |
+      6. MH7 4MB9 ME8 13MB9 2MH7 5. |
+      6. MH7 3MB9 3ME8 8MB9 ME8 3MB9 MH7 6. |
+      6. MH7 2MB9 5ME8 6MB9 3ME8 2MB9 MH7 6. |
+      6. MH7 3MB9 3ME8 3MB9 ME8 2MB9 5ME8 MB9 MH7 6. |
+      6. MH7 4MB9 ME8 3MB9 3ME8 2MB9 3ME8 2MB9 MH7 6. |
+      6. MH7 7MB9 5ME8 2MB9 ME8 3MB9 MH7 6. |
+      6. MH7 8MB9 3ME8 7MB9 MH7 6. |
+      6. 10MH7 ME8 9MH7 6. |
+      15. 3MH7 14. |
+      32. |
+      32.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'doraemon-propeller',
+    title: '哆啦A梦·旋转飞天竹蜻蜓',
+    category: 'anime',
+    tag: '造梦经典',
+    difficulty: '★★★☆☆',
+    desc: '32×32治愈画幅。大雄最温暖的依靠，蔚蓝圆溜溜脑袋、红鼻头小铃铛与头顶高速旋转的金黄飞天竹蜻蜓，带你飞跃童年梦境。',
+    matrix: decodeGrid(`
+      32. |
+      32. |
+      10. 12MH7 10. |
+      10. MH7 5MA4 MD14 4MA4 MH7 10. |
+      10. 6MH7 MD14 5MH7 10. |
+      9. 3MH7 4MC4 MD14 4MC4 3MH7 8. |
+      8. 2MH7 13MC4 2MH7 7. |
+      7. 2MH7 15MC4 2MH7 6. |
+      7. MH7 5MC4 MH1 5MC4 MH1 5MC4 MH7 6. |
+      6. 2MH7 3MC4 11MH1 3MC4 2MH7 5. |
+      6. MH7 4MC4 11MH1 4MC4 MH7 5. |
+      6. MH7 3MC4 4MH1 MH7 MH1 MF10 MH1 MH7 4MH1 3MC4 MH7 5. |
+      6. MH7 3MC4 5MH1 3MF10 5MH1 3MC4 MH7 5. |
+      5. 2MH7 2MC4 5MH1 2MF10 MH1 2MF10 5MH1 2MC4 2MH7 4. |
+      5. MH7 3MC4 6MH1 MF10 MH7 MF10 6MH1 3MC4 MH7 4. |
+      5. 2MH7 2MC4 5MH7 2MH1 MH7 2MH1 5MH7 2MC4 2MH7 4. |
+      6. MH7 MC4 8MH1 MH7 8MH1 MC4 MH7 5. |
+      6. MH7 2MC4 5MH7 2MH1 MH7 2MH1 5MH7 2MC4 MH7 5. |
+      6. MH7 2MC4 7MH1 MH7 7MH1 2MC4 MH7 5. |
+      6. 2MH7 MC4 7MH1 MH7 7MH1 MC4 2MH7 5. |
+      7. MH7 2MC4 13MH1 2MC4 MH7 6. |
+      7. 2MH7 2MC4 11MH1 2MC4 2MH7 6. |
+      8. 2MH7 12MF10 MC4 2MH7 7. |
+      9. MH7 6MF10 MA4 5MF10 2MH7 8. |
+      9. 6MH7 3MA4 5MH7 9. |
+      13. MH7 2MA4 MH7 2MA4 MH7 12. |
+      13. 2MH7 3MA4 2MH7 12. |
+      14. 2MH7 MA4 2MH7 13. |
+      15. 3MH7 14. |
+      32. |
+      32. |
+      32.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'sailor-moon-crescent',
+    title: '美少女战士·水手月亮变身',
+    category: 'anime',
+    tag: '少女心天花板',
+    difficulty: '★★★★★',
+    desc: '32×32高阶复杂画幅。代表月亮消灭你！标志性金黄双丸子双长发、额间月牙闪烁、水手蓝领与变身胸针，梦幻华美工艺考究。',
+    matrix: decodeGrid(`
+      32. |
+      32. |
+      9. 3MH7 9. 3MH7 8. |
+      7. 3MH7 MA4 3MH7 5. 3MH7 MA4 3MH7 6. |
+      6. 2MH7 5MA4 2MH7 3. 2MH7 5MA4 2MH7 5. |
+      6. MH7 7MA4 MH7 3. MH7 7MA4 MH7 5. |
+      5. 2MH7 7MA4 2MH7 1. 2MH7 7MA4 2MH7 4. |
+      5. MH7 9MA4 3MH7 9MA4 MH7 4. |
+      5. 2MH7 7MA4 2MH7 MA18 2MH7 7MA4 2MH7 4. |
+      5. MH7 7MA4 3MA18 MA6 3MA18 7MA4 MH7 4. |
+      5. MH7 9MA4 3MA6 9MA4 MH7 4. |
+      5. MH7 3MA4 MH7 MA4 2MA18 MC4 2MA4 MA6 2MA4 MC4 2MA18 MA4 MH7 3MA4 MH7 4. |
+      4. 2MH7 3MA4 2MH7 MA18 3MC4 3MA4 3MC4 MA18 2MH7 3MA4 2MH7 3. |
+      4. MH7 4MA4 2MH7 2MC4 MH1 2MC4 MA4 2MC4 MH1 2MC4 2MH7 4MA4 MH7 3. |
+      4. MH7 4MA4 MH7 2MA18 3MC4 3MA18 3MC4 2MA18 MH7 4MA4 MH7 3. |
+      4. MH7 3MA4 3MH7 2MA18 MC4 5MA18 MC4 2MA18 3MH7 3MA4 MH7 3. |
+      4. MH7 3MA4 MH7 1. MH7 11MA18 MH7 1. MH7 3MA4 MH7 3. |
+      4. MH7 3MA4 MH7 1. MH7 5MA18 MF10 5MA18 MH7 1. MH7 3MA4 MH7 3. |
+      4. MH7 3MA4 MH7 1. 2MH7 9MA18 2MH7 1. MH7 3MA4 MH7 3. |
+      4. MH7 3MA4 MH7 2. 2MH7 7MA18 2MH7 2. MH7 3MA4 MH7 3. |
+      4. MH7 2MA4 2MH7 3. 4MH7 MA18 4MH7 3. 2MH7 2MA4 MH7 3. |
+      3. 2MH7 2MA4 9MH7 MF10 9MH7 2MA4 2MH7 2. |
+      3. MH7 3MA4 2MH7 4MH1 2MC4 3MF10 2MC4 4MH1 2MH7 3MA4 MH7 2. |
+      3. MH7 3MA4 2MH7 5MH1 2MF10 MA4 2MF10 5MH1 2MH7 3MA4 MH7 2. |
+      3. MH7 2MA4 2MH7 7MH1 3MF10 7MH1 2MH7 2MA4 MH7 2. |
+      3. MH7 2MA4 2MH7 8MH1 MF10 8MH1 2MH7 2MA4 MH7 2. |
+      3. MH7 2MA4 2MH7 17MH1 2MH7 2MA4 MH7 2. |
+      3. 5MH7 17MH1 5MH7 2. |
+      6. MH7 19MH1 MH7 5. |
+      6. MH7 19MH1 MH7 5. |
+      6. MH7 19MH1 MH7 5. |
+      6. 21MH7 5.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'luo-xiaohei-cat',
+    title: '罗小黑·灵动碧眼黑猫妖',
+    category: 'anime',
+    tag: '国漫神作',
+    difficulty: '★★★☆☆',
+    desc: '32×32治愈画幅。国产治愈系动画顶流，通体墨黑软糯猫咪身姿、两汪翡翠般清澈碧绿的大眼睛与微卷灵动长尾，灵气逼人。',
+    matrix: decodeGrid(`
+      32. |
+      32. |
+      32. |
+      32. |
+      8. 7MD7 3. 7MD7 7. |
+      8. MD7 5MH7 MD7 3. MD7 5MH7 MD7 7. |
+      7. 2MD7 5MH7 5MD7 5MH7 2MD7 6. |
+      7. MD7 2MH7 3MD10 MH7 2MD7 MH7 2MD7 MH7 3MD10 2MH7 MD7 6. |
+      7. MD7 3MH7 MD10 9MH7 MD10 3MH7 MD7 6. |
+      7. MD7 17MH7 MD7 6. |
+      7. 2MD7 15MH7 2MD7 6. |
+      7. 2MD7 3MH7 MB9 7MH7 MB9 3MH7 2MD7 6. |
+      7. MD7 2MH7 5MB9 3MH7 5MB9 2MH7 MD7 6. |
+      7. MD7 2MH7 2MB9 MH1 2MB9 3MH7 2MB9 MH1 2MB9 2MH7 MD7 6. |
+      6. 2MD7 MH7 4MB9 MH7 2MB9 MH7 2MB9 MH7 4MB9 MH7 2MD7 5. |
+      6. MD7 3MH7 5MB9 3MH7 5MB9 3MH7 MD7 5. |
+      6. 2MD7 2MH7 5MB9 3MH7 5MB9 2MH7 2MD7 5. |
+      7. MD7 4MH7 MB9 3MH7 MH1 3MH7 MB9 4MH7 MD7 6. |
+      7. MD7 17MH7 5MD7 2. |
+      7. 2MD7 15MH7 2MD7 3MH7 MD7 2. |
+      8. MD7 15MH7 2MD7 3MH7 MD7 2. |
+      8. MD7 15MH7 MD7 4MH7 MD7 2. |
+      7. 2MD7 15MH7 MD7 3MH7 2MD7 2. |
+      7. MD7 20MH7 MD7 3. |
+      7. 2MD7 19MH7 MD7 3. |
+      8. MD7 17MH7 3MD7 3. |
+      8. MD7 15MH7 3MD7 5. |
+      8. 2MD7 13MH7 2MD7 7. |
+      9. 2MD7 11MH7 2MD7 8. |
+      10. 2MD7 9MH7 2MD7 9. |
+      11. 5MD7 MH7 5MD7 10. |
+      15. 3MD7 14.
+    `, 32, 32, C_MAP)
+  },
+  {
+    id: 'steve-jobs-portrait',
+    title: '乔布斯·极简黑领毛衣与圆眼镜',
+    category: 'celebrity',
+    tag: '科技美学',
+    difficulty: '★★★★☆',
+    desc: '32×32致敬画幅。苹果极简主义灵魂人物，标志性圆框眼镜、精修灰白短须与极简黑色高领毛衣，透射出纯粹深邃的科技哲人目光。',
+    matrix: decodeGrid(`
+      12. 9MD7 11. |
+      11. 11MD7 10. |
+      10. 13MD7 9. |
+      9. 15MD7 8. |
+      9. 7MD7 MA18 7MD7 8. |
+      9. 4MD7 7MA18 4MD7 8. |
+      8. 4MD7 9MA18 4MD7 7. |
+      8. 3MD7 11MA18 3MD7 7. |
+      8. 3MD7 2MA18 MC18 5MA18 MC18 2MA18 3MD7 7. |
+      9. 2MD7 MA18 3MC18 3MA18 3MC18 MA18 2MD7 8. |
+      9. MD7 MA18 2MC18 MH7 MC18 3MH7 MC18 MH7 2MC18 MA18 MD7 8. |
+      9. 2MD7 MA18 3MC18 MA18 MD20 MA18 3MC18 MA18 2MD7 8. |
+      10. MD7 2MA18 7MD20 2MA18 MD7 9. |
+      10. MD7 MA18 MD20 6MD7 2MD20 MA18 MD7 9. |
+      10. 2MD7 MD20 6MD7 2MD20 2MD7 9. |
+      10. MD7 11MD20 MD7 9. |
+      10. 2MD7 2MD20 5MH7 2MD20 2MD7 9. |
+      11. MD7 9MD20 MD7 10. |
+      11. MD7 8MH7 2MD7 10. |
+      11. MD7 8MH7 MD7 11. |
+      11. MD7 8MH7 MD7 11. |
+      11. MD7 8MH7 MD7 11. |
+      6. 21MD7 5. |
+      6. MD7 19MH7 2MD7 4. |
+      5. 2MD7 20MH7 MD7 4. |
+      5. MD7 21MH7 MD7 4. |
+      5. MD7 21MH7 MD7 4. |
+      5. MD7 21MH7 2MD7 3. |
+      4. 2MD7 22MH7 MD7 3. |
+      4. MD7 23MH7 MD7 3. |
+      4. MD7 23MH7 MD7 3. |
+      4. 25MD7 3.
+    `, 32, 32, C_MAP)
+  },
   {
     id: 'chiikawa-hachiware',
     title: '吉伊卡哇·小八猫',
