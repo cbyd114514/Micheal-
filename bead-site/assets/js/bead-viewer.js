@@ -175,30 +175,88 @@ export function renderPattern(ctx, matrix, options = {}) {
   if (beadStyle !== 'hollow') {
     ctx.lineWidth = defaultLineWidth;
     ctx.strokeStyle = defaultStrokeStyle;
-  }
 
-  for (let y = 0; y < rows; y++) {
-    const row = matrix[y];
-    for (let x = 0; x < cols; x++) {
-      const bead = row[x];
-      if (!bead) continue;
+    // 高性能同色批处理通道：收集相同 (color, alpha) 的豆子，合并 Path 统一绘制
+    // 将数千次 GPU 绘制调用降低数十倍，显著提升弱机与大画幅下的交互帧率
+    const batches = new Map();
+    const half = beadSize / 2;
+    const cornerR = Math.max(0, Math.min(beadSize * 0.16, 3));
+    const canRoundRect = typeof ctx.roundRect === 'function';
 
-      const bx = originX + x * cellSize + inset;
-      const by = originY + y * cellSize + inset;
-      const isMatch = !highlightCode || bead.code === highlightCode;
+    for (let y = 0; y < rows; y++) {
+      const row = matrix[y];
+      for (let x = 0; x < cols; x++) {
+        const bead = row[x];
+        if (!bead) continue;
 
-      let alpha = 1;
-      if (!isMatch && dimOthers) alpha = 0.14;
-      else if (excluded.has(bead.code)) alpha = 0.2;
-      if (alpha !== 1) ctx.globalAlpha = alpha;
+        const bx = originX + x * cellSize + inset;
+        const by = originY + y * cellSize + inset;
+        const isMatch = !highlightCode || bead.code === highlightCode;
 
-      tracePath(ctx, beadStyle, bx, by, beadSize);
-      ctx.fillStyle = beadColor(bead);
-      ctx.fill();
+        let alpha = 1;
+        if (!isMatch && dimOthers) alpha = 0.14;
+        else if (excluded.has(bead.code)) alpha = 0.2;
 
-      if (beadStyle !== 'hollow') {
-        ctx.stroke();
+        const color = beadColor(bead);
+        const batchKey = alpha === 1 ? color : `${color}|${alpha}`;
+        let batch = batches.get(batchKey);
+        if (!batch) {
+          batch = { color, alpha, points: [] };
+          batches.set(batchKey, batch);
+        }
+        batch.points.push(bx, by);
+
+        if (isMatch && highlightCode) outlined.push([bx, by]);
+      }
+    }
+
+    for (const batch of batches.values()) {
+      if (batch.alpha !== 1) ctx.globalAlpha = batch.alpha;
+      ctx.fillStyle = batch.color;
+      ctx.beginPath();
+      const pts = batch.points;
+      if (beadStyle === 'square') {
+        for (let i = 0; i < pts.length; i += 2) {
+          if (canRoundRect) {
+            ctx.roundRect(pts[i], pts[i + 1], beadSize, beadSize, cornerR);
+          } else {
+            ctx.rect(pts[i], pts[i + 1], beadSize, beadSize);
+          }
+        }
       } else {
+        // round
+        for (let i = 0; i < pts.length; i += 2) {
+          const cx = pts[i] + half;
+          const cy = pts[i + 1] + half;
+          ctx.moveTo(cx + half, cy);
+          ctx.arc(cx, cy, half, 0, Math.PI * 2);
+        }
+      }
+      ctx.fill();
+      ctx.stroke();
+      if (batch.alpha !== 1) ctx.globalAlpha = 1;
+    }
+  } else {
+    // 中空圆珠单独通道
+    for (let y = 0; y < rows; y++) {
+      const row = matrix[y];
+      for (let x = 0; x < cols; x++) {
+        const bead = row[x];
+        if (!bead) continue;
+
+        const bx = originX + x * cellSize + inset;
+        const by = originY + y * cellSize + inset;
+        const isMatch = !highlightCode || bead.code === highlightCode;
+
+        let alpha = 1;
+        if (!isMatch && dimOthers) alpha = 0.14;
+        else if (excluded.has(bead.code)) alpha = 0.2;
+        if (alpha !== 1) ctx.globalAlpha = alpha;
+
+        tracePath(ctx, beadStyle, bx, by, beadSize);
+        ctx.fillStyle = beadColor(bead);
+        ctx.fill();
+
         // 中空圆珠：外圈描边 + 中心孔洞
         ctx.lineWidth = Math.max(1, beadSize * 0.16);
         ctx.strokeStyle = beadColor(bead);
@@ -216,11 +274,11 @@ export function renderPattern(ctx, matrix, options = {}) {
         ctx.beginPath();
         ctx.arc(bx + beadSize / 2, by + beadSize / 2, beadSize * 0.26, 0, Math.PI * 2);
         ctx.stroke();
+
+        if (alpha !== 1) ctx.globalAlpha = 1;
+
+        if (isMatch && highlightCode) outlined.push([bx, by]);
       }
-
-      if (alpha !== 1) ctx.globalAlpha = 1;
-
-      if (isMatch && highlightCode) outlined.push([bx, by]);
     }
   }
 

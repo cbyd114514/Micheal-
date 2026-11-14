@@ -1601,23 +1601,34 @@
         ctx.stroke();
       }
 
+      // 批量聚合相同颜色的圆进行填充与单次批量描边，大幅降低 GPU 上下文切换与绘制调用
       const beadRadius = CELL_SIZE * 0.44;
+      const boardBatches = new Map();
       for (let y = 0; y < boardSize; y++) {
         for (let x = 0; x < boardSize; x++) {
           const bead = grid[y][x];
           if (bead) {
-            const centerX = x * CELL_SIZE + CELL_SIZE / 2;
-            const centerY = y * CELL_SIZE + CELL_SIZE / 2;
-
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, beadRadius, 0, Math.PI * 2);
-            ctx.fillStyle = bead.hex;
-            ctx.fill();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = 'rgba(0, 0, 0, 0.15)';
-            ctx.stroke();
+            let pts = boardBatches.get(bead.hex);
+            if (!pts) {
+              pts = [];
+              boardBatches.set(bead.hex, pts);
+            }
+            pts.push(x * CELL_SIZE + CELL_SIZE / 2, y * CELL_SIZE + CELL_SIZE / 2);
           }
         }
+      }
+
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.15)';
+      for (const [hex, pts] of boardBatches) {
+        ctx.fillStyle = hex;
+        ctx.beginPath();
+        for (let i = 0; i < pts.length; i += 2) {
+          ctx.moveTo(pts[i] + beadRadius, pts[i + 1]);
+          ctx.arc(pts[i], pts[i + 1], beadRadius, 0, Math.PI * 2);
+        }
+        ctx.fill();
+        ctx.stroke();
       }
 
       // 2. 右侧色号对照图（标尺坐标与编号）
@@ -1655,30 +1666,48 @@
         sCtx.stroke();
       }
 
+      // 批量聚合对照图同色豆子，提升刷新帧率
+      const sBatches = new Map();
+      const codeDrawList = [];
       for (let y = 0; y < boardSize; y++) {
         for (let x = 0; x < boardSize; x++) {
           const bead = grid[y][x];
           if (bead) {
-            const centerX = ruler + x * CELL_SIZE + CELL_SIZE / 2;
-            const centerY = ruler + y * CELL_SIZE + CELL_SIZE / 2;
-
-            sCtx.beginPath();
-            sCtx.arc(centerX, centerY, beadRadius, 0, Math.PI * 2);
-            sCtx.fillStyle = bead.hex;
-            sCtx.fill();
-            sCtx.strokeStyle = 'rgba(0, 0, 0, 0.15)';
-            sCtx.stroke();
-
-            // 色号文字：格子够大才画，否则 26px 的格子里塞 3 个字符会糊成一团
-            if (showCode) {
-              const lum = 0.299 * bead.r + 0.587 * bead.g + 0.114 * bead.b;
-              sCtx.font = `bold 9px monospace`;
-              sCtx.textAlign = 'center';
-              sCtx.textBaseline = 'middle';
-              sCtx.fillStyle = lum > 140 ? '#000000' : '#ffffff';
-              sCtx.fillText(bead.code, centerX, centerY);
+            let pts = sBatches.get(bead.hex);
+            if (!pts) {
+              pts = [];
+              sBatches.set(bead.hex, pts);
             }
+            const cx = ruler + x * CELL_SIZE + CELL_SIZE / 2;
+            const cy = ruler + y * CELL_SIZE + CELL_SIZE / 2;
+            pts.push(cx, cy);
+            if (showCode) codeDrawList.push({ code: bead.code, r: bead.r, g: bead.g, b: bead.b, cx, cy });
           }
+        }
+      }
+
+      sCtx.lineWidth = 1;
+      sCtx.strokeStyle = 'rgba(0, 0, 0, 0.15)';
+      for (const [hex, pts] of sBatches) {
+        sCtx.fillStyle = hex;
+        sCtx.beginPath();
+        for (let i = 0; i < pts.length; i += 2) {
+          sCtx.moveTo(pts[i] + beadRadius, pts[i + 1]);
+          sCtx.arc(pts[i], pts[i + 1], beadRadius, 0, Math.PI * 2);
+        }
+        sCtx.fill();
+        sCtx.stroke();
+      }
+
+      // 色号文字绘制（仅当 showCode 开启）
+      if (showCode && codeDrawList.length) {
+        sCtx.font = 'bold 9px monospace';
+        sCtx.textAlign = 'center';
+        sCtx.textBaseline = 'middle';
+        for (const item of codeDrawList) {
+          const lum = 0.299 * item.r + 0.587 * item.g + 0.114 * item.b;
+          sCtx.fillStyle = lum > 140 ? '#000000' : '#ffffff';
+          sCtx.fillText(item.code, item.cx, item.cy);
         }
       }
     }
