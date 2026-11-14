@@ -821,6 +821,23 @@ input[type='range']:focus-visible {
   box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
+[data-theme='dark'] input[type='range'],
+[data-theme='dark'] input[type='range']::-webkit-slider-runnable-track,
+[data-theme='dark'] input[type='range']::-moz-range-track {
+  background: #252b3b !important;
+}
+
+[data-theme='dark'] input[type='range']::-webkit-slider-thumb {
+  border-color: #1a202c !important;
+  background: var(--accent) !important;
+  box-shadow: 0 0 10px rgba(0, 82, 255, 0.4) !important;
+}
+
+[data-theme='dark'] input[type='range']::-moz-range-thumb {
+  border-color: #1a202c !important;
+  background: var(--accent) !important;
+}
+
 /* ------------------------------------------------------------------ *
  * 8. 工具条 / 分组控件
  * ------------------------------------------------------------------ */

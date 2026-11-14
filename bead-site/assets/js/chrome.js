@@ -28,9 +28,11 @@ export function currentTheme() {
 function updateThemeButton() {
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
   const label = isDark ? '亮色模式' : '暗色模式';
-  const icon = isDark ? '☀️' : '🌙';
+  const iconSvg = isDark
+    ? `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`
+    : `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
   document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
-    btn.innerHTML = `<span aria-hidden="true">${icon}</span><span>${label}</span>`;
+    btn.innerHTML = `<span class="theme-btn-icon" style="display:inline-flex;align-items:center;">${iconSvg}</span><span>${label}</span>`;
   });
 }
 
@@ -205,7 +207,7 @@ function injectComplianceModal() {
         <div id="compliance-main-box">
           <div style="text-align:center;">
             <div class="compliance-header-tag">
-              <span>🛡️</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:2px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               <span>合规与隐私指引</span>
             </div>
             <h3 class="compliance-modal-title">欢迎使用 Micheal 的拼豆网</h3>
@@ -217,17 +219,23 @@ function injectComplianceModal() {
 
           <div class="compliance-grid">
             <div class="compliance-card">
-              <span class="compliance-card-icon">🔒</span>
+              <span class="compliance-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </span>
               <div class="compliance-card-title">纯本地运算</div>
               <p class="compliance-card-desc">图片转图纸在浏览器本地完成，绝不上传云端，零隐私泄露。</p>
             </div>
             <div class="compliance-card">
-              <span class="compliance-card-icon">⚖️</span>
+              <span class="compliance-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+              </span>
               <div class="compliance-card-title">内容安全守则</div>
               <p class="compliance-card-desc">严禁涉黄、低俗、暴力恐怖与侵权内容，系统内置 AI 审核。</p>
             </div>
             <div class="compliance-card">
-              <span class="compliance-card-icon">🎨</span>
+              <span class="compliance-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+              </span>
               <div class="compliance-card-title">非商业手作</div>
               <p class="compliance-card-desc">图库资源仅限个人研习交流，尊重原作者合法著作权。</p>
             </div>
@@ -241,7 +249,7 @@ function injectComplianceModal() {
           </div>
 
           <label class="compliance-check-label" id="compliance-check-container">
-            <input type="checkbox" id="compliance-agree-checkbox" />
+            <input type="checkbox" id="compliance-agree-checkbox" checked />
             <span>我已认真阅读并同意遵守上述《用户服务协议》、《隐私政策》及国家互联网内容安全管理规定。</span>
           </label>
 
@@ -252,14 +260,16 @@ function injectComplianceModal() {
         </div>
 
         <div id="compliance-disagree-box" style="display:none;text-align:center;padding:12px 6px;">
-          <div style="font-size:38px;margin-bottom:12px;">⚖️</div>
+          <div style="margin-bottom:12px;color:var(--accent);display:flex;justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+          </div>
           <h4 style="margin:0 0 10px;font-size:18px;">依据法规要求提示</h4>
           <p class="muted" style="font-size:13.5px;line-height:1.75;margin:0 auto 20px;max-width:440px;">
-            依据相关网络信息服务法律法规，使用在线创作与图像转换工具需确认隐私与合规条款。若您暂不同意，将无法正常使用本站设计工具。
+            依据相关网络信息服务法律法规，使用在线创作、图片转图纸与设计保存功能需确认隐私与合规条款。若您暂不同意，您可以先以访客身份浏览公开图纸与教程。
           </p>
           <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-            <button id="btn-reconsider-compliance" class="btn btn-primary" type="button">重新考虑并同意</button>
-            <button id="btn-exit-site" class="btn btn-outline" type="button">关闭页面离开</button>
+            <button id="btn-reconsider-compliance" class="btn btn-primary" type="button">返回签署协议</button>
+            <button id="btn-exit-site" class="btn btn-outline" type="button">以访客身份浏览</button>
           </div>
         </div>
       </div>
@@ -306,7 +316,10 @@ function injectComplianceModal() {
   });
 
   btnExit?.addEventListener('click', () => {
-    window.location.href = 'about:blank';
+    // 允许以访客模式浏览网页公开内容，解除死锁遮罩
+    sessionStorage.setItem('pindou_visitor_mode', 'true');
+    document.body.classList.remove('compliance-locked');
+    modal.classList.remove('open');
   });
 }
 
@@ -467,11 +480,16 @@ export function injectChrome(activePage = '') {
     handlePrivacyClick(e);
   });
 
-  // 全站注入合规模态框并执行首次拦截检查
+  // 全站注入合规模态框并执行拦截检查
   injectComplianceModal();
   const isPrivacyPage = (window.location.pathname || '').toLowerCase().includes('privacy');
+  const isVisitorMode = sessionStorage.getItem('pindou_visitor_mode') === 'true';
+  const isCreatePage = (window.location.pathname || '').toLowerCase().includes('create');
+
   if (!isComplianceAgreed() && !isPrivacyPage) {
-    openComplianceModal({ force: true });
+    if (!isVisitorMode || isCreatePage) {
+      openComplianceModal({ force: true });
+    }
   }
 
   initReveal();

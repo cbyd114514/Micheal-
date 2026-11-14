@@ -22,8 +22,8 @@
     <!-- 数字工坊快速操作条 -->
     <div class="workshop-action-bar reveal">
       <div class="workshop-intro">
-        <span class="badge badge--workshop">✨ 独家工坊</span>
-        <strong>自制图纸转工坊</strong> · 上传动漫头像、萌宠照片或像素手绘，AI 智能转化为拼豆图纸并入驻数字工坊！
+        <span class="badge badge--workshop">数字工坊</span>
+        <strong>原创图片转图纸</strong> · 上传参考图片，系统自动匹配 Artkal 色号并转换为拼豆图纸保存至工坊。
       </div>
       <button id="btn-open-upload-modal" class="btn-upload-trigger" type="button">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
@@ -33,14 +33,14 @@
 
     <!-- 分类筛选器 -->
     <div class="filter-tabs" id="filter-tabs">
-      <button class="filter-tab active" data-category="all">全部</button>
-      <button class="filter-tab filter-tab--workshop" data-category="workshop">💎 我的数字工坊</button>
-      <button class="filter-tab" data-category="anime">🔥 热门动漫</button>
-      <button class="filter-tab" data-category="pets">🐾 治愈萌宠</button>
-      <button class="filter-tab" data-category="games">🎮 游戏像素</button>
-      <button class="filter-tab" data-category="food">🍔 美食甜品</button>
-      <button class="filter-tab" data-category="architecture">🏯 名胜古建</button>
-      <button class="filter-tab" data-category="festival">🏮 节日庆典</button>
+      <button class="filter-tab active" data-category="all">全部精选</button>
+      <button class="filter-tab filter-tab--workshop" data-category="workshop">我的工坊</button>
+      <button class="filter-tab" data-category="anime">热门动漫</button>
+      <button class="filter-tab" data-category="pets">治愈萌宠</button>
+      <button class="filter-tab" data-category="games">游戏像素</button>
+      <button class="filter-tab" data-category="food">美食甜品</button>
+      <button class="filter-tab" data-category="architecture">名胜古建</button>
+      <button class="filter-tab" data-category="festival">节日庆典</button>
     </div>
 
     <div class="patterns-grid" id="patterns-grid"></div>
@@ -77,15 +77,15 @@
   <div class="modal-backdrop" id="upload-modal" role="dialog" aria-modal="true" aria-label="上传图片转图纸">
     <div class="upload-modal-dialog">
       <button class="modal-close-btn" id="upload-modal-close-btn" type="button" aria-label="关闭">&times;</button>
-      <h2 style="margin:0;font-size:22px;font-family:var(--font-display);">✨ 上传图片 · 自动转化为拼豆图纸</h2>
-      <p class="muted" style="font-size:13.5px;margin:8px 0 20px;">支持 JPG / PNG / WebP 格式。内置 AI 内容安全自动审核（杜绝色情违规内容），自动匹配 Artkal Mini 2.6mm 真实色卡并归档至数字工坊。</p>
+      <h2 style="margin:0;font-size:22px;font-family:var(--font-display);">上传图片 · 自动转换为拼豆图纸</h2>
+      <p class="muted" style="font-size:13.5px;margin:8px 0 20px;">支持 JPG / PNG / WebP 格式。内置内容安全审核，自动匹配 Artkal Mini 2.6mm 色卡并归档至数字工坊。</p>
 
       <!-- 拖拽上传区 -->
       <div class="upload-dropzone" id="upload-dropzone">
         <input type="file" id="upload-file-input" accept="image/png,image/jpeg,image/webp" style="display:none;" />
         <svg class="upload-dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m16 16-4-4-4 4"/></svg>
         <p style="font-weight:600;margin:0 0 6px;color:var(--foreground);">点击选择图片 或 将图片拖拽至此区域</p>
-        <p class="muted" style="font-size:12.5px;margin:0;">建议上传主体明确、轮廓清晰的动漫、萌宠或像素手绘图片</p>
+        <p class="muted" style="font-size:12.5px;margin:0;">建议上传主体明确、轮廓清晰的动漫、萌宠或手绘图片</p>
       </div>
 
       <!-- 安全审核指示条 -->
@@ -95,13 +95,13 @@
       <div id="preview-section" style="display:none;">
         <div class="preview-split-box">
           <div class="preview-pane">
-            <span class="preview-pane-title">📷 原图参考</span>
+            <span class="preview-pane-title">原图参考</span>
             <div class="preview-media-wrap">
               <img id="source-img-preview" alt="原图预览" />
             </div>
           </div>
           <div class="preview-pane">
-            <span class="preview-pane-title" id="pattern-preview-title">🎨 拼豆图纸效果</span>
+            <span class="preview-pane-title" id="pattern-preview-title">图纸效果预览</span>
             <div class="preview-media-wrap">
               <canvas id="converted-pattern-canvas"></canvas>
             </div>
@@ -112,17 +112,17 @@
         <div class="upload-options-form">
           <div class="form-group-custom">
             <label for="cfg-title">图纸名称</label>
-            <input type="text" id="cfg-title" class="form-control-custom" placeholder="例如：我的可爱小猫" maxlength="24" />
+            <input type="text" id="cfg-title" class="form-control-custom" placeholder="例如：我的原创拼豆" maxlength="24" />
           </div>
           <div class="form-group-custom">
             <label for="cfg-category">所属分类</label>
             <select id="cfg-category" class="form-control-custom">
-              <option value="anime">🔥 热门动漫</option>
-              <option value="pets">🐾 治愈萌宠</option>
-              <option value="games">🎮 游戏像素</option>
-              <option value="food">🍔 美食甜品</option>
-              <option value="architecture">🏯 名胜古建</option>
-              <option value="festival">🏮 节日庆典</option>
+              <option value="anime">热门动漫</option>
+              <option value="pets">治愈萌宠</option>
+              <option value="games">游戏像素</option>
+              <option value="food">美食甜品</option>
+              <option value="architecture">名胜古建</option>
+              <option value="festival">节日庆典</option>
             </select>
           </div>
           <div class="form-group-custom">
@@ -153,7 +153,7 @@
           <div id="stats-summary-text" class="muted" style="font-size:13px;"></div>
           <div style="display:flex;gap:10px;">
             <button id="btn-cancel-upload" class="btn btn-outline" type="button">取消</button>
-            <button id="btn-save-to-workshop" class="btn btn-primary" type="button">🚀 发布至数字工坊</button>
+            <button id="btn-save-to-workshop" class="btn btn-primary" type="button">发布至数字工坊</button>
           </div>
         </div>
       </div>
@@ -219,9 +219,11 @@
         const empty = document.createElement('div');
         empty.className = 'empty-workshop';
         empty.innerHTML = `
-          <div class="empty-workshop-icon">🎨</div>
+          <div class="empty-workshop-icon" style="color:var(--accent);">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          </div>
           <h3 style="margin: 0 0 8px; font-size: 18px; color: var(--foreground);">你的数字工坊暂无图纸</h3>
-          <p style="margin: 0 0 16px; font-size: 14px;">点击上方「上传图片转图纸」按钮，即可将你喜爱的图片瞬间转换为拼豆图纸并入驻工坊！</p>
+          <p style="margin: 0 0 16px; font-size: 14px;">点击上方「上传图片转图纸」按钮，即可将你喜爱的图片转换为拼豆图纸保存至工坊。</p>
           <button class="btn btn-primary" onclick="document.getElementById('btn-open-upload-modal').click()">立即上传制作 →</button>
         `;
         gridContainer.appendChild(empty);
@@ -235,7 +237,7 @@
         const card = document.createElement('article');
         card.className = 'pattern-card reveal';
         const badgeClass = p.isUserUploaded ? 'badge--workshop' : 'badge--accent';
-        const tagText = p.isUserUploaded ? '💎 工坊原创' : (p.tag || '精选');
+        const tagText = p.isUserUploaded ? '工坊原创' : (p.tag || '精选');
 
         card.innerHTML = `
           <div class="pattern-preview-box">
@@ -506,7 +508,7 @@
       safetyIndicator.className = 'safety-indicator safety-indicator--scanning';
       safetyIndicator.innerHTML = `
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1.2s linear infinite;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
-        <span>🛡️ AI 安全审核系统正在对图片进行合规扫描（色情裸露与不良特征检测）...</span>
+        <span>安全审核系统正在对图片进行合规检测...</span>
       `;
 
       const reader = new FileReader();
@@ -524,11 +526,11 @@
           });
 
           if (!auditResult.pass) {
-            // 审核不通过，严厉拦截
+            // 审核不通过，拦截
             safetyIndicator.className = 'safety-indicator safety-indicator--danger';
             safetyIndicator.innerHTML = `
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              <span>${auditResult.reason || '⚠️ 内容安全审核未通过：检测到该图片涉嫌包含色情违规内容，已被数字工坊系统拦截。'}</span>
+              <span>${auditResult.reason || '内容安全审核未通过：检测到该图片涉嫌违规内容，已自动拦截。'}</span>
             `;
             previewSection.style.display = 'none';
             btnSaveToWorkshop.disabled = true;
@@ -539,7 +541,7 @@
           safetyIndicator.className = 'safety-indicator safety-indicator--pass';
           safetyIndicator.innerHTML = `
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            <span>✓ 内容安全审核通过（健康合规）· 图像已自动量化匹配为 Artkal Mini 色系！</span>
+            <span>内容安全审核通过 · 图像已量化匹配为 Artkal 色卡</span>
           `;
           btnSaveToWorkshop.disabled = false;
           previewSection.style.display = 'block';

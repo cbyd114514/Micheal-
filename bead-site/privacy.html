@@ -27,15 +27,20 @@
     .compliance-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       background: rgba(0, 82, 255, 0.1);
       color: var(--accent);
-      padding: 6px 14px;
+      padding: 6px 16px;
       border-radius: 999px;
       font-size: 13px;
       font-weight: 600;
       margin-bottom: 14px;
       border: 1px solid rgba(0, 82, 255, 0.2);
+    }
+    .compliance-badge svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2.2;
     }
     .compliance-title {
       font-size: 28px;
@@ -61,8 +66,15 @@
       box-shadow: var(--shadow-sm);
     }
     .highlight-card-icon {
-      font-size: 24px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      color: var(--accent);
+    }
+    .highlight-card-icon svg {
+      width: 22px;
+      height: 22px;
     }
     .highlight-card-title {
       font-size: 16px;
@@ -156,7 +168,7 @@
   <main class="compliance-page-container">
     <div class="compliance-header">
       <div class="compliance-badge">
-        <span>🛡️</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         <span>合规与隐私保障声明</span>
       </div>
       <h1 class="compliance-title">隐私政策与服务合规协议</h1>
@@ -165,14 +177,16 @@
         <span style="margin: 0 8px;">·</span>
         <span>生效日期：2026年11月14日</span>
         <span style="margin: 0 8px;">·</span>
-        <span>版本号：v2.1</span>
+        <span>版本号：v2.2</span>
       </div>
     </div>
 
     <!-- 核心承诺卡片 -->
     <div class="compliance-highlights">
       <div class="highlight-card">
-        <div class="highlight-card-icon">🔒</div>
+        <div class="highlight-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
         <div class="highlight-card-title">纯本地运算 · 零隐私上传</div>
         <p class="highlight-card-desc">
           所有图片转图纸、色号识别、设计稿渲染 100% 在您的浏览器客户端内存中完成，不上传至任何云端服务器，保障绝对隐私。
@@ -180,7 +194,9 @@
       </div>
 
       <div class="highlight-card">
-        <div class="highlight-card-icon">⚖️</div>
+        <div class="highlight-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+        </div>
         <div class="highlight-card-title">内容安全与合规治理</div>
         <p class="highlight-card-desc">
           严格遵循网络安全法规，严禁上传与传播任何淫秽色情、暴力恐怖及违法违规图样，系统内置多维智能安全过滤。
@@ -188,7 +204,9 @@
       </div>
 
       <div class="highlight-card">
-        <div class="highlight-card-icon">🎨</div>
+        <div class="highlight-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+        </div>
         <div class="highlight-card-title">手作研习与版权规范</div>
         <p class="highlight-card-desc">
           图纸库资源仅供手作爱好者个人研习与非商业技艺交流。尊重知识产权，提供侵权快速下架联络通道。
@@ -208,7 +226,7 @@
 
       <h2>2. 个人信息与数据处理原则（纯本地沙盒架构）</h2>
       <div class="compliance-success">
-        <strong>✓ 隐私保障承诺：</strong>本站采用先进的现代 Web 前端计算架构，所有图形处理和算法运算均在您的浏览器本地执行。
+        <strong>隐私保障承诺：</strong>本站采用先进的现代 Web 前端计算架构，所有图形处理和算法运算均在您的浏览器本地执行。
       </div>
       <p>我们如何处理您的数据具体如下：</p>
       <ul>
@@ -222,7 +240,7 @@
         营造清朗健康的网络生态空间是我们的法定义务与共同责任。任何使用本站工具的用户，均须恪守宪法法律、公共秩序与社会公德。
       </p>
       <div class="compliance-alert">
-        <strong>⚠️ 严格禁止的行为与内容：</strong>严禁利用本站生成、转换、储存、传播或分享任何含有以下特征的图样或文字：
+        <strong>禁止行为与违规内容清单：</strong>严禁利用本站生成、转换、储存、传播或分享任何含有以下特征的图样或文字：
       </div>
       <ol>
         <li><strong>淫秽、色情、低俗及露骨性暗示：</strong>严禁处理任何包含人体敏感裸露、色情器官、性行为描写或不良视听特征的图片；</li>
@@ -277,7 +295,7 @@
       </ul>
 
       <div class="compliance-actions">
-        <button id="btn-reagree-compliance" class="btn btn-primary" type="button">✓ 我已完全理解并同意本政策</button>
+        <button id="btn-reagree-compliance" class="btn btn-primary" type="button">我已充分理解并同意本政策</button>
         <a href="index.html" class="btn btn-outline">返回首页</a>
         <a href="create.html" class="btn btn-outline">前往创作工坊</a>
       </div>
@@ -295,11 +313,15 @@
       reagreeBtn.addEventListener('click', () => {
         localStorage.setItem('pindou_compliance_agreed', 'true');
         localStorage.setItem('pindou_compliance_agreed_time', new Date().toISOString());
-        reagreeBtn.textContent = '✓ 已完成合规签署';
+        reagreeBtn.textContent = '已完成合规签署';
         reagreeBtn.classList.add('btn-success');
         setTimeout(() => {
-          window.location.href = 'create.html';
-        }, 600);
+          if (document.referrer && document.referrer.includes(window.location.host) && !document.referrer.includes('privacy')) {
+            window.location.href = document.referrer;
+          } else {
+            window.location.href = 'index.html';
+          }
+        }, 500);
       });
     }
   </script>
