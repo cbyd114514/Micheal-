@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>隐私政策与合规服务协议 · Micheal 的拼豆网</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230052ff'/%3E%3Ccircle cx='11' cy='12' r='4' fill='%23fff'/%3E%3Ccircle cx='21' cy='12' r='4' fill='%23FFD400'/%3E%3Ccircle cx='11' cy='21' r='4' fill='%23E60012'/%3E%3Ccircle cx='21' cy='21' r='4' fill='%2322c55e'/%3E%3C/svg%3E" />
+
+  <meta name="description" content="Micheal 的拼豆网隐私政策与用户服务合规协议，遵循《个人信息保护法》与《网络安全法》，保障用户纯本地运算隐私安全，明确内容合规守则。" />
+  <meta name="keywords" content="拼豆网,隐私政策,合规说明,用户协议,内容安全,个人信息保护" />
+  <meta name="theme-color" content="#0052FF" />
+
+  <link rel="stylesheet" href="assets/css/theme.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <style>
+    .compliance-page-container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+    .compliance-header {
+      text-align: center;
+      margin-bottom: 36px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .compliance-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 82, 255, 0.1);
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      border: 1px solid rgba(0, 82, 255, 0.2);
+    }
+    .compliance-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 0 12px;
+      color: var(--foreground);
+    }
+    .compliance-meta {
+      font-size: 13px;
+      color: var(--muted-foreground);
+    }
+    .compliance-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .highlight-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .highlight-card-icon {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .highlight-card-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 6px;
+      color: var(--foreground);
+    }
+    .highlight-card-desc {
+      font-size: 13.5px;
+      color: var(--muted-foreground);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .compliance-content {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 36px;
+      box-shadow: var(--shadow-sm);
+      line-height: 1.8;
+      font-size: 14.5px;
+      color: var(--foreground);
+    }
+    .compliance-content h2 {
+      font-size: 19px;
+      font-weight: 700;
+      margin: 32px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      color: var(--foreground);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .compliance-content h2:first-of-type {
+      margin-top: 0;
+    }
+    .compliance-content h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 20px 0 8px;
+      color: var(--foreground);
+    }
+    .compliance-content p {
+      margin: 0 0 14px;
+    }
+    .compliance-content ul, .compliance-content ol {
+      margin: 0 0 16px;
+      padding-left: 22px;
+    }
+    .compliance-content li {
+      margin-bottom: 6px;
+    }
+    .compliance-alert {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      margin: 18px 0;
+      font-size: 13.5px;
+      color: var(--foreground);
+    }
+    .compliance-alert strong {
+      color: #ef4444;
+    }
+    .compliance-success {
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      margin: 18px 0;
+      font-size: 13.5px;
+      color: var(--foreground);
+    }
+    .compliance-success strong {
+      color: #16a34a;
+    }
+    .compliance-actions {
+      margin-top: 36px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="compliance-page-container">
+    <div class="compliance-header">
+      <div class="compliance-badge">
+        <span>🛡️</span>
+        <span>合规与隐私保障声明</span>
+      </div>
+      <h1 class="compliance-title">隐私政策与服务合规协议</h1>
+      <div class="compliance-meta">
+        <span>更新日期：2026年11月14日</span>
+        <span style="margin: 0 8px;">·</span>
+        <span>生效日期：2026年11月14日</span>
+        <span style="margin: 0 8px;">·</span>
+        <span>版本号：v2.1</span>
+      </div>
+    </div>
+
+    <!-- 核心承诺卡片 -->
+    <div class="compliance-highlights">
+      <div class="highlight-card">
+        <div class="highlight-card-icon">🔒</div>
+        <div class="highlight-card-title">纯本地运算 · 零隐私上传</div>
+        <p class="highlight-card-desc">
+          所有图片转图纸、色号识别、设计稿渲染 100% 在您的浏览器客户端内存中完成，不上传至任何云端服务器，保障绝对隐私。
+        </p>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-card-icon">⚖️</div>
+        <div class="highlight-card-title">内容安全与合规治理</div>
+        <p class="highlight-card-desc">
+          严格遵循网络安全法规，严禁上传与传播任何淫秽色情、暴力恐怖及违法违规图样，系统内置多维智能安全过滤。
+        </p>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-card-icon">🎨</div>
+        <div class="highlight-card-title">手作研习与版权规范</div>
+        <p class="highlight-card-desc">
+          图纸库资源仅供手作爱好者个人研习与非商业技艺交流。尊重知识产权，提供侵权快速下架联络通道。
+        </p>
+      </div>
+    </div>
+
+    <!-- 详细条款内容 -->
+    <article class="compliance-content">
+      <h2>1. 总则与法律依据</h2>
+      <p>
+        欢迎使用 <strong>Micheal 的拼豆网</strong>（以下简称“本站”或“我们”）。我们高度重视用户的个人隐私保护、数据安全与合法合规运营。本协议依照《中华人民共和国网络安全法》、《中华人民共和国个人信息保护法》(PIPL)、《中华人民共和国数据安全法》、《互联网信息服务管理办法》及《网络信息内容生态治理规定》等国家法律法规与政策标准制定。
+      </p>
+      <p>
+        在您使用本站各项功能（包括但不限于图片转图纸、灵感图库浏览、白板创作、数字工坊以及导出图纸）之前，请您务必审慎阅读、充分理解各条款内容。<strong>如您使用本站，即代表您已充分理解并自愿接受本协议的全部条款。</strong>
+      </p>
+
+      <h2>2. 个人信息与数据处理原则（纯本地沙盒架构）</h2>
+      <div class="compliance-success">
+        <strong>✓ 隐私保障承诺：</strong>本站采用先进的现代 Web 前端计算架构，所有图形处理和算法运算均在您的浏览器本地执行。
+      </div>
+      <p>我们如何处理您的数据具体如下：</p>
+      <ul>
+        <li><strong>无服务器上传图片：</strong>当您在“创作工坊”或“灵感图库”中上传参考图片或照片时，图像仅被读入您浏览器的本地内存进行 Canvas 像素点采样和色号比对，<strong>不会向任何远程服务器或第三方接口传输、存储或转储您的原始图片文件</strong>。</li>
+        <li><strong>本地存储（LocalStorage / IndexedDB）使用声明：</strong>为了让您拥有连续的使用体验，本站在您的本地浏览器中保存少量偏好配置数据（如深色/亮色外观偏好、所选拼豆色卡规格、自制数字工坊草稿、合规协议签署状态）。这些数据完全留存在您的本地设备上，不包含任何个人身份信息（PII），您随时可以通过清理浏览器缓存将其删除。</li>
+        <li><strong>零第三方跟踪脚本：</strong>本站不嵌入任何侵犯用户隐私的第三方用户画像收集 SDK、跨站追踪 Cookie 或商业广告追踪脚本。</li>
+      </ul>
+
+      <h2>3. 用户行为规范与内容安全严令</h2>
+      <p>
+        营造清朗健康的网络生态空间是我们的法定义务与共同责任。任何使用本站工具的用户，均须恪守宪法法律、公共秩序与社会公德。
+      </p>
+      <div class="compliance-alert">
+        <strong>⚠️ 严格禁止的行为与内容：</strong>严禁利用本站生成、转换、储存、传播或分享任何含有以下特征的图样或文字：
+      </div>
+      <ol>
+        <li><strong>淫秽、色情、低俗及露骨性暗示：</strong>严禁处理任何包含人体敏感裸露、色情器官、性行为描写或不良视听特征的图片；</li>
+        <li><strong>暴力、血腥、恐怖与教唆犯罪：</strong>严禁生成涉及血腥杀戮、恐怖主义、残害动物、自残自杀及传授犯罪方法的内容；</li>
+        <li><strong>危害国家安全与社会稳定：</strong>反对宪法基本原则，破坏国家统一、领土完整及民族团结的言论与标志；</li>
+        <li><strong>侵犯他人人格权：</strong>利用他人照片未经许可恶意拼豆化丑化、诽谤、侮辱或侵害他人名誉权、肖像权与隐私权；</li>
+        <li><strong>侵犯他人知识产权：</strong>未经合法权利人授权，将具有排他性版权的商业图案用于非法转售、盗版周边印制或商业盈利。</li>
+      </ol>
+      <p>
+        <strong>智能审查机制说明：</strong>本站已集成客户端内容安全审查引擎。当检测到图片或文本包含疑似违规、裸露或敏感特征时，系统将坚决阻断转换与发布流程，并向用户发出合规警示。对于恶意规避审查的严重违规行为，我们保留依法留存证据并配合有关监管部门执法的权利。
+      </p>
+
+      <h2>4. 知识产权与合理使用（Fair Use）声明</h2>
+      <ul>
+        <li><strong>学习与手工非商业用途：</strong>本站“灵感图库”中所展示的像素及拼豆图纸，系供手作爱好者、学生及家庭手作者进行手工技艺研习、创意启发与个人非营利使用。相关动漫形象、游戏角色及卡通 IP 的知识产权归其原始合法著作权人所有。</li>
+        <li><strong>原创图纸保护：</strong>由作者 Micheal 原创编排及由用户在“数字工坊”通过白板手工绘制的图纸，创作者享有著作权。未经权利人许可，任何第三方不得擅自批量抓取、商业转售或用于商业衍生品生产。</li>
+        <li><strong>侵权投诉与 24 小时下架机制：</strong>若您是某一美术作品或品牌的知识产权所有人，且认为本站图库收录的某些参考内容涉嫌侵犯您的合法权益，请发送权利证明及涉权链接至我们的法务联络邮箱 <code>compliance@pindouwang.com</code>。我们将在收到通知并核实后的 24 小时内迅速采取下架或断开链接措施。</li>
+      </ul>
+
+      <h2>5. 安全操作与未成年人保护指引</h2>
+      <p>
+        拼豆（Perler / Artkal Beads）手作需要经历摆放拼豆与热熔熨烫过程：
+      </p>
+      <ul>
+        <li><strong>电熨斗防烫伤安全：</strong>热熔固定需使用电熨斗或专业热压机，操作温度较高。<strong>14 周岁以下未成年人进行拼豆熨烫作业时，必须有成年监护人全过程现场陪同与操作，切勿让儿童单独接触发热熨斗与电源</strong>。</li>
+        <li><strong>细小零件防误吞：</strong>常规拼豆规格为 2.6mm 及 5.0mm，属于细小零件。请务必妥善保管，防范 3 岁以下婴幼儿接触误食引发窒息危险。</li>
+      </ul>
+
+      <h2>6. 免责声明</h2>
+      <p>
+        在法律法规允许的范围内，本站对以下情况予以免责：
+      </p>
+      <ul>
+        <li>因用户设备故障、浏览器环境兼容性问题、个人误清浏览器缓存导致的图纸草稿丢失；</li>
+        <li>因不可抗力、网络运营商故障或系统更新维护导致的暂时性服务访问中断；</li>
+        <li>用户私自将本站生成的手作图纸用于商业侵权或生产流通活动，引发的第三方索赔与行政处罚，由实施侵权行为的用户独立承担全部法律后果。</li>
+      </ul>
+
+      <h2>7. 协议更新与生效</h2>
+      <p>
+        根据国家法律法规演进及本站服务演进，我们可能会适时修订本合规协议与隐私政策。修订后的条款将公布在本页面并注明最新更新日期。若条款发生实质性重大变更，我们将在您再次访问时重新提示您查阅并征得您的明确同意。
+      </p>
+
+      <h2>8. 联系与意见反馈</h2>
+      <p>
+        如果您对本隐私政策、合规守则或个人信息安全有任何疑问、意见或投诉建议，欢迎通过以下渠道与我们联系：
+      </p>
+      <ul>
+        <li>法务与合规联系邮箱：<code>compliance@pindouwang.com</code></li>
+        <li>站长交流与支持邮箱：<code>support@pindouwang.com</code></li>
+        <li>处理时限：我们承诺在 3 个工作日内给予正式答复并跟进处理。</li>
+      </ul>
+
+      <div class="compliance-actions">
+        <button id="btn-reagree-compliance" class="btn btn-primary" type="button">✓ 我已完全理解并同意本政策</button>
+        <a href="index.html" class="btn btn-outline">返回首页</a>
+        <a href="create.html" class="btn btn-outline">前往创作工坊</a>
+      </div>
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="module">
+    import { injectChrome } from './assets/js/chrome.js';
+    try { injectChrome('privacy'); } catch (e) { console.warn(e); }
+
+    const reagreeBtn = document.getElementById('btn-reagree-compliance');
+    if (reagreeBtn) {
+      reagreeBtn.addEventListener('click', () => {
+        localStorage.setItem('pindou_compliance_agreed', 'true');
+        localStorage.setItem('pindou_compliance_agreed_time', new Date().toISOString());
+        reagreeBtn.textContent = '✓ 已完成合规签署';
+        reagreeBtn.classList.add('btn-success');
+        setTimeout(() => {
+          window.location.href = 'create.html';
+        }, 600);
+      });
+    }
+  </script>
+</body>
+</html>

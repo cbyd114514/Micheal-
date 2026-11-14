@@ -394,6 +394,19 @@ async function main() {
     'nav-mobile-dropdown',
     'btn-open-sponsor',
     'mobile-sponsor-btn',
+    'compliance-modal',
+    'compliance-close-btn',
+    'compliance-agree-checkbox',
+    'btn-agree-compliance',
+    'btn-disagree-compliance',
+    'compliance-disagree-box',
+    'btn-reconsider-compliance',
+    'btn-exit-site',
+    'compliance-main-box',
+    'compliance-status-tip',
+    'compliance-check-container',
+    'footer-privacy-link',
+    'mobile-privacy-link',
   ]);
 
   function collectHtmlIds(htmlRel) {

@@ -138,6 +138,179 @@ function injectSponsorModal() {
 }
 
 /* ------------------------------------------------------------------ *
+ * 隐私政策与全站合规同意弹窗 (Compliance Consent Gate)
+ * ------------------------------------------------------------------ */
+export function isComplianceAgreed() {
+  try {
+    return localStorage.getItem('pindou_compliance_agreed') === 'true';
+  } catch (e) {
+    return false;
+  }
+}
+
+export function openComplianceModal({ force = false, viewOnly = false } = {}) {
+  injectComplianceModal();
+  const modal = document.getElementById('compliance-modal');
+  if (!modal) return;
+
+  const closeBtn = document.getElementById('compliance-close-btn');
+  const mainBox = document.getElementById('compliance-main-box');
+  const disagreeBox = document.getElementById('compliance-disagree-box');
+  const statusTip = document.getElementById('compliance-status-tip');
+  const checkbox = document.getElementById('compliance-agree-checkbox');
+
+  if (mainBox) mainBox.style.display = 'block';
+  if (disagreeBox) disagreeBox.style.display = 'none';
+
+  const agreed = isComplianceAgreed();
+
+  if (viewOnly || agreed) {
+    if (closeBtn) closeBtn.style.display = 'grid';
+    if (checkbox) checkbox.checked = true;
+    if (statusTip) {
+      const agreedTime = localStorage.getItem('pindou_compliance_agreed_time');
+      const timeStr = agreedTime ? new Date(agreedTime).toLocaleDateString('zh-CN') : '已完成';
+      statusTip.textContent = `（您已于 ${timeStr} 签署同意，可再次查阅）`;
+      statusTip.style.display = 'inline';
+    }
+    document.body.classList.remove('compliance-locked');
+  } else {
+    if (closeBtn) closeBtn.style.display = 'none';
+    if (checkbox) checkbox.checked = false;
+    if (statusTip) statusTip.style.display = 'none';
+    document.body.classList.add('compliance-locked');
+  }
+
+  modal.classList.add('open');
+}
+
+export function closeComplianceModal() {
+  const modal = document.getElementById('compliance-modal');
+  if (modal) modal.classList.remove('open');
+  if (isComplianceAgreed()) {
+    document.body.classList.remove('compliance-locked');
+  }
+}
+
+function injectComplianceModal() {
+  if (document.getElementById('compliance-modal')) return;
+
+  const BASE = location.pathname.includes('/inspiration/') ? '../' : '';
+
+  const modalHtml = `
+    <div id="compliance-modal" class="modal-backdrop compliance-backdrop" role="dialog" aria-modal="true" aria-label="服务协议与隐私合规指引">
+      <div class="modal-dialog compliance-modal-dialog">
+        <button id="compliance-close-btn" class="modal-close-btn" type="button" aria-label="关闭" style="display:none;">&times;</button>
+
+        <div id="compliance-main-box">
+          <div style="text-align:center;">
+            <div class="compliance-header-tag">
+              <span>🛡️</span>
+              <span>合规与隐私指引</span>
+            </div>
+            <h3 class="compliance-modal-title">欢迎使用 Micheal 的拼豆网</h3>
+            <p class="compliance-modal-sub">
+              根据《中华人民共和国个人信息保护法》与《网络安全法》等法规要求，为保障您的合法权益，请在使用前阅读并同意服务与隐私说明。
+              <span id="compliance-status-tip" style="color:var(--accent);font-weight:600;display:none;"></span>
+            </p>
+          </div>
+
+          <div class="compliance-grid">
+            <div class="compliance-card">
+              <span class="compliance-card-icon">🔒</span>
+              <div class="compliance-card-title">纯本地运算</div>
+              <p class="compliance-card-desc">图片转图纸在浏览器本地完成，绝不上传云端，零隐私泄露。</p>
+            </div>
+            <div class="compliance-card">
+              <span class="compliance-card-icon">⚖️</span>
+              <div class="compliance-card-title">内容安全守则</div>
+              <p class="compliance-card-desc">严禁涉黄、低俗、暴力恐怖与侵权内容，系统内置 AI 审核。</p>
+            </div>
+            <div class="compliance-card">
+              <span class="compliance-card-icon">🎨</span>
+              <div class="compliance-card-title">非商业手作</div>
+              <p class="compliance-card-desc">图库资源仅限个人研习交流，尊重原作者合法著作权。</p>
+            </div>
+          </div>
+
+          <div class="compliance-summary-box">
+            <p><strong>1. 数据零上传承诺：</strong>本工具为纯前端 Web 离线计算工具，图片解码、像素化与色卡比对完全在您的设备本地内存进行，不保存或传输您的图片。</p>
+            <p><strong>2. 严格恪守内容安全：</strong>禁止生成或传播任何色情裸露、暴力恐怖或违法违规图样。若违规将被系统拦截阻断。</p>
+            <p><strong>3. 知识产权与免责：</strong>精选图纸仅供手作学习参考。拼豆熨烫作业涉及高温，未成年人需在监护人陪同指导下进行。</p>
+            <p><strong>4. 完整条款：</strong>请参阅 <a href="${BASE}privacy.html" target="_blank" rel="noopener">《拼豆网隐私政策与合规协议全文》</a>。</p>
+          </div>
+
+          <label class="compliance-check-label" id="compliance-check-container">
+            <input type="checkbox" id="compliance-agree-checkbox" />
+            <span>我已认真阅读并同意遵守上述《用户服务协议》、《隐私政策》及国家互联网内容安全管理规定。</span>
+          </label>
+
+          <div class="compliance-actions-row">
+            <button id="btn-disagree-compliance" class="btn btn-outline" type="button">暂不同意</button>
+            <button id="btn-agree-compliance" class="btn btn-primary" type="button">同意并开始使用</button>
+          </div>
+        </div>
+
+        <div id="compliance-disagree-box" style="display:none;text-align:center;padding:12px 6px;">
+          <div style="font-size:38px;margin-bottom:12px;">⚖️</div>
+          <h4 style="margin:0 0 10px;font-size:18px;">依据法规要求提示</h4>
+          <p class="muted" style="font-size:13.5px;line-height:1.75;margin:0 auto 20px;max-width:440px;">
+            依据相关网络信息服务法律法规，使用在线创作与图像转换工具需确认隐私与合规条款。若您暂不同意，将无法正常使用本站设计工具。
+          </p>
+          <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+            <button id="btn-reconsider-compliance" class="btn btn-primary" type="button">重新考虑并同意</button>
+            <button id="btn-exit-site" class="btn btn-outline" type="button">关闭页面离开</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+  const modal = document.getElementById('compliance-modal');
+  const closeBtn = document.getElementById('compliance-close-btn');
+  const checkbox = document.getElementById('compliance-agree-checkbox');
+  const checkContainer = document.getElementById('compliance-check-container');
+  const btnAgree = document.getElementById('btn-agree-compliance');
+  const btnDisagree = document.getElementById('btn-disagree-compliance');
+  const mainBox = document.getElementById('compliance-main-box');
+  const disagreeBox = document.getElementById('compliance-disagree-box');
+  const btnReconsider = document.getElementById('btn-reconsider-compliance');
+  const btnExit = document.getElementById('btn-exit-site');
+
+  closeBtn?.addEventListener('click', () => {
+    closeComplianceModal();
+  });
+
+  btnAgree?.addEventListener('click', () => {
+    if (!checkbox.checked) {
+      checkContainer?.classList.remove('compliance-shake');
+      void checkContainer?.offsetWidth; // trigger reflow
+      checkContainer?.classList.add('compliance-shake');
+      return;
+    }
+    localStorage.setItem('pindou_compliance_agreed', 'true');
+    localStorage.setItem('pindou_compliance_agreed_time', new Date().toISOString());
+    closeComplianceModal();
+  });
+
+  btnDisagree?.addEventListener('click', () => {
+    if (mainBox) mainBox.style.display = 'none';
+    if (disagreeBox) disagreeBox.style.display = 'block';
+  });
+
+  btnReconsider?.addEventListener('click', () => {
+    if (disagreeBox) disagreeBox.style.display = 'none';
+    if (mainBox) mainBox.style.display = 'block';
+  });
+
+  btnExit?.addEventListener('click', () => {
+    window.location.href = 'about:blank';
+  });
+}
+
+/* ------------------------------------------------------------------ *
  * 滚动淡入
  * ------------------------------------------------------------------ */
 function initReveal() {
@@ -222,6 +395,7 @@ export function injectChrome(activePage = '') {
           <ul class="nav-mobile-list">
             ${mobileLinks}
             <li><a href="javascript:void(0)" class="nav-mobile-link" id="mobile-sponsor-btn">赞助支持</a></li>
+            <li><a href="privacy.html" class="nav-mobile-link" id="mobile-privacy-link">隐私与合规说明</a></li>
           </ul>
         </div>
       </header>
@@ -271,11 +445,33 @@ export function injectChrome(activePage = '') {
             <a href="whiteboard.html">白板画板</a>
             <a href="inspiration.html">灵感图库</a>
             <a href="tutorial.html">制作教程</a>
+            <a href="privacy.html" id="footer-privacy-link">隐私与合规说明</a>
           </nav>
-          <p>© 2026 Micheal</p>
+          <p>© 2026 Micheal · 纯本地沙盒运算 · 零个人信息上传</p>
         </div>
       </footer>
     `;
+  }
+
+  // 绑定合规协议弹窗查看事件
+  const handlePrivacyClick = (e) => {
+    if (e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+      e.preventDefault();
+      openComplianceModal({ viewOnly: true });
+    }
+  };
+  document.getElementById('footer-privacy-link')?.addEventListener('click', handlePrivacyClick);
+  document.getElementById('mobile-privacy-link')?.addEventListener('click', (e) => {
+    document.getElementById('nav-mobile-dropdown')?.classList.remove('open');
+    document.getElementById('nav-hamburger-btn')?.classList.remove('active');
+    handlePrivacyClick(e);
+  });
+
+  // 全站注入合规模态框并执行首次拦截检查
+  injectComplianceModal();
+  const isPrivacyPage = (window.location.pathname || '').toLowerCase().includes('privacy');
+  if (!isComplianceAgreed() && !isPrivacyPage) {
+    openComplianceModal({ force: true });
   }
 
   initReveal();
